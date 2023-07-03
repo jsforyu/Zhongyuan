@@ -6,15 +6,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class LineTextCollisionDetection : MonoBehaviour
+public class LineTextCollisionDetection : Singleton<LineTextCollisionDetection>
 {
-
-    public Text test;
-
     [SerializeField] private Text textComponent;
 
     [SerializeField] private Font font;
 
+    [SerializeField] private Text[] notes;
     [Header("Line")]
     private LineRenderer lineRenderer;
 
@@ -24,8 +22,13 @@ public class LineTextCollisionDetection : MonoBehaviour
 
     private int line_end;
 
+    private int line_starty;
+
+    private int pagesNum = 0;
+
     private string line_text = "";
 
+    private List<string> notesList = new List<string>();
 
     private List<Vector3> selectPoints = new List<Vector3>();
     private void Start()
@@ -41,6 +44,7 @@ public class LineTextCollisionDetection : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             line_start = (int)Input.mousePosition.x;
+            line_starty=(int) Input.mousePosition.y;
             lineRenderer.positionCount = 1;
             Vector3 drawPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
             lineRenderer.SetPosition(0, drawPosition);
@@ -105,10 +109,11 @@ public class LineTextCollisionDetection : MonoBehaviour
         for (int i = 0; i < textGenerator.characterCount; i++)
         {
             UICharInfo charInfo = textGenerator.characters[i];
-            Vector2 position = charInfo.cursorPos / textComponent.pixelsPerUnit-new Vector2(0,GetCharacterHeight()*1.1f);
+            Vector2 position = charInfo.cursorPos / textComponent.pixelsPerUnit-new Vector2(0,GetCharacterHeight()*1.2f);
             // 转换为文本组件的世界坐标
-            Vector3 worldPosition = textComponent.rectTransform.TransformPoint(position);   
-            if (line_start - (GetCharacterWidth()/2) < worldPosition.x && worldPosition.x < line_end - (GetCharacterWidth() / 2))
+            Vector3 worldPosition = textComponent.rectTransform.TransformPoint(position);
+            //Debug.Log("世界坐标(y):" + worldPosition.y + "高度" + GetCharacterHeight() + "鼠标开始的y" + line_starty);
+            if (line_start - (GetCharacterWidth()/2) < worldPosition.x && worldPosition.x < line_end - (GetCharacterWidth() / 2)&&Mathf.Abs(worldPosition.y-line_starty)<0.5*GetCharacterHeight())
             {
                 if (i < textComponent.text.Length)
                 {
@@ -129,7 +134,44 @@ public class LineTextCollisionDetection : MonoBehaviour
                 lineRenderer.SetPosition(i + 1, temp);
             }
         }
-        test.text = line_text;
+        if(line_text!="")notesList.Add(line_text);
+        else { lineRenderer.positionCount = 1; }
+        UpdateNotes();
+    }
+    private void UpdateNotes()
+    {
+        int currentPage=pagesNum* notes.Length;
+        for (int i=0; i<notes.Length; i++)
+        {
+            if(currentPage+i>=notesList.Count)
+            {
+                notes[i].text = string.Empty;
+            }
+            else
+            {
+                notes[i].text = notesList[currentPage+i];
+            }
+
+        }
+    }
+
+    public void NextPage()
+    {
+        if(notesList.Count>(pagesNum+1)*notes.Length)
+        pagesNum++;
+    }
+    public void LastPage()
+    {
+        if(pagesNum>0)
+        {
+            pagesNum--;
+        }
+    }
+
+    public void DeteleteNote(string deteleString)
+    {
+        notesList.Remove(deteleString);
+        UpdateNotes();
     }
     //private void LineAni()
     //{
