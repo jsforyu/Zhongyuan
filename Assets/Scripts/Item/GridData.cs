@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GridData : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
+public class GridData : BaseUI
 {
     public ItemDataSO itemData;
-
-    private bool isSelect;
 
     private void Update()
     {
@@ -29,14 +27,5 @@ public class GridData : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
                 }
             }
         }
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isSelect= true; 
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isSelect= false;
     }
 }
