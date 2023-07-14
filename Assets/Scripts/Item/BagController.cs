@@ -113,13 +113,6 @@ public class BagController : Singleton<BagController>
                     {
                        for(int i=0;i<itemDataLists.Count;i++)
                         {
-                            if (itemDataLists[i] == itemCom_01 || itemDataLists[i]==itemCom_02)
-                            {
-                                itemDataLists[i] = null;
-                            }
-                        }
-                       for(int i=0;i<itemDataLists.Count;i++)
-                        {
                             if (itemDataLists[i]==null)
                             {
                                 itemDataLists[i] = itemcompositings.targetItem; 
@@ -133,13 +126,6 @@ public class BagController : Singleton<BagController>
                 {
                     if(itemCom_02==itemcompositings.firstItem)
                     {
-                        for (int i = 0; i < itemDataLists.Count; i++)
-                        {
-                            if (itemDataLists[i] == itemCom_01 || itemDataLists[i] == itemCom_02)
-                            {
-                                itemDataLists[i] = null;
-                            }
-                        }
                         for (int i = 0; i < itemDataLists.Count; i++)
                         {
                             if (itemDataLists[i] == null)
