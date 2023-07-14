@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int ID;
+    public string chname;
+    public DialogueData_So dialogue;
+    public int state;
+
     void Start()
     {
         
@@ -15,4 +19,7 @@ public class Character : MonoBehaviour
     {
         
     }
+
+
+    
 }
