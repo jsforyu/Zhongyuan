@@ -55,7 +55,16 @@ public class Player : Character
             collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }                     //应该按照状态来判断现在先这样
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Character>().ID == 1)
+        {
+            id = collision.gameObject.GetComponent<Character>().ID;
+            Debug.Log(id);
+            Debug.Log("离开了");
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 
     public void PreDialogue()
     {

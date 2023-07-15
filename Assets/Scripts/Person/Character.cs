@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     public DialogueData_So dialogue;
     public int state;
 
+
     void Start()
     {
         
