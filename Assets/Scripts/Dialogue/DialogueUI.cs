@@ -17,7 +17,7 @@ public class DialogueUI : MonoBehaviour
     public GameObject QuestionButton;
     public Animator fadeText;
     public string[,] Evidences = new string[99,99];
-    public List<DialogueText> clews;
+    public List<Item> clews;
     GameObject currentcharacter;
     int index;
     int eindex;
@@ -79,7 +79,7 @@ public class DialogueUI : MonoBehaviour
         Content.text = "";
         textfinshed = false;
         int clewindex=0;
-        if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew != "") clews.Add(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index]);
+        if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew != "") clews.Add(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem);
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
             if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
