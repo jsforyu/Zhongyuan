@@ -8,4 +8,5 @@ public class DialogueData_So : ScriptableObject
 
     //一个person可以对应多个dialogue
     public List<string> DialogueList;
+    public List<int> DialogueState;
 }
