@@ -58,7 +58,7 @@ public class DialogueUI : MonoBehaviour
         Debug.Log(Player.instance.id);
         currentcharacter = CharacterManager.instance.Characters[Player.instance.id];
         Name.text = currentcharacter.GetComponent<Character>().chname;
-        currentcharacter.transform.GetChild(0).gameObject.SetActive(false);
+        currentcharacter.GetComponent<Character>().Button.SetActive(false);
         dialogueui.gameObject.SetActive(true);
         textfinshed = true;
         SwitchDialogue();//Òª¸Ä³Éswitch

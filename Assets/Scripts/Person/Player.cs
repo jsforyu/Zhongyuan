@@ -10,50 +10,96 @@ public class Player : Character
     
     Rigidbody2D ri;
     public int id; //前一个对话npc的id
-
+    Vector3 mouseposition;
     private void Awake()
     {
             instance = this;
     }
     void Start()
     {
+        ri = GetComponent<Rigidbody2D>();
         Debug.Log("1" + transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        /*
+        if (Vector3.Distance(transform.position, mouseposition) < 0.01f)
+        {
+            transform.position = mouseposition;
+            anim.SetBool("walk", false);
+        }
+        */
+
+        //Move();
     }
+    public float Speed;
+    private bool isFirstClicked;
 
     private void FixedUpdate()
     {
+        if(state != 0)
+        {
+            return;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            _targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _targetPos.z = 0;
+            //dir = _targetPos - gameObject.transform.position;
+            isFirstClicked = true;
+        }
+
+        float distance = gameObject.transform.position.x -  _targetPos.x;
+ 
+        if (isFirstClicked && Mathf.Abs(distance) > 1f)
+        {
+            Vector3 dir = (_targetPos - gameObject.transform.position).normalized;
+            dir.z = 0;
+            dir.y = 0;
+            ri.velocity = dir * speed * Time.deltaTime;
+            anim.SetBool("walk", true);
+        }
+        else
+        {
+            ri.velocity = Vector2.zero;
+            _targetPos = gameObject.transform.position;
+            //gameObject.transform.position = _targetPos;
+            anim.SetBool("walk", false);
+        }
         //Move();
     }
 
+    private Vector3 _targetPos;
     private void Move()
     {
         if (Input.GetMouseButtonDown(0)&&  state == 0)
         {
-            Vector3 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseposition.z = 0f;
             mouseposition.y = transform.position.y;
             //Debug.Log("2"+mouseposition);
-            transform.position = Vector3.MoveTowards(transform.position, mouseposition, speed * Time.deltaTime);
+                anim.SetBool("walk", true);
+                ri.MovePosition(mouseposition);
+            Vector3 dir = Vector3.Normalize(mouseposition - ri.gameObject.transform.position);
+            ri.AddForce(dir * 10);
             //Debug.Log("3" + transform.position);
         }
 
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.GetComponent<Character>().ID==1)
         {
             id = collision.gameObject.GetComponent<Character>().ID;
+            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
+                collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+                return;
             Debug.Log(id);
             Debug.Log("撞上了");
             if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
-                collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                collision.gameObject.GetComponent<Character>().Button.SetActive(true);
         }                     //应该按照状态来判断现在先这样
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -63,12 +109,7 @@ public class Player : Character
             id = collision.gameObject.GetComponent<Character>().ID;
             Debug.Log(id);
             Debug.Log("离开了");
-            collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            collision.gameObject.GetComponent<Character>().Button.SetActive(false);
         }
-    }
-
-    public void PreDialogue()
-    {
-
     }
 }
