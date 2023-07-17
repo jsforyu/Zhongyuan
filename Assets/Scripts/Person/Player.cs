@@ -52,7 +52,8 @@ public class Player : Character
             id = collision.gameObject.GetComponent<Character>().ID;
             Debug.Log(id);
             Debug.Log("撞上了");
-            collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+                collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }                     //应该按照状态来判断现在先这样
     }
     private void OnTriggerExit2D(Collider2D collision)

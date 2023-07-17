@@ -16,7 +16,7 @@ public class DialogueUI : MonoBehaviour
     public float textspeed;
     public GameObject QuestionButton;
     public Animator fadeText;
-    public string[,] Evidences = new string[99,99];
+    public EvidenceData evidences;
     GameObject currentcharacter;
     int index;
     int eindex;
@@ -42,7 +42,7 @@ public class DialogueUI : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0) && Player.instance.state == 1 && !textfinshed)//整个流程没完全结束
         {
-            if (highstate && currentcharacter.GetComponent<Character>().dialogue.DialogueList[index - 1].state == 2)//文字消失+自动显示下一行
+            if (highstate && currentcharacter.GetComponent<Character>().dialogue.DialogueList[currentcharacter.GetComponent<Character>().dialogue.currentindex - 1].state == 2)//文字消失+自动显示下一行
             {
                 fadeText.SetTrigger("Fade");
             }
@@ -64,12 +64,13 @@ public class DialogueUI : MonoBehaviour
         Content.text = "";
         Content.color = Color.black;//还原到原来的颜色
         textfinshed = false;
-        for(int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
+        index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
+        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
             Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
-        index++;
+        currentcharacter.GetComponent<Character>().dialogue.currentindex++;
         textfinshed = true;
     }
 
@@ -78,6 +79,8 @@ public class DialogueUI : MonoBehaviour
         Content.text = "";
         textfinshed = false;
         int clewindex=0;
+        index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
+        Debug.Log(index);
         if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem !=null)
             BagController.Instance.BagAddItem(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem);
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
@@ -94,17 +97,18 @@ public class DialogueUI : MonoBehaviour
             yield return new WaitForSeconds(textspeed);
         }
         QuestionButton.SetActive(true);
-        index++;
+        currentcharacter.GetComponent<Character>().dialogue.currentindex++;
     }
     IEnumerator ShowDialogueHigh()//高亮，上浮消失
     {
         Content.text = "";
         textfinshed = false;
+        index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
         if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence != "")
-        { Evidences[eindex,0] = currentcharacter.GetComponent<Character>().chname;
-         Evidences[eindex, 1] = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence;
+        { evidences.Evidences[eindex,0] = currentcharacter.GetComponent<Character>().chname;
+         evidences.Evidences[eindex, 1] = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence;
         }
-        Debug.Log(Evidences[eindex, 0]+ Evidences[eindex, 1]);
+        Debug.Log(evidences.Evidences[eindex, 0]+ evidences.Evidences[eindex, 1]);
         int evidenceindex = 0;
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
@@ -120,7 +124,7 @@ public class DialogueUI : MonoBehaviour
             else Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
-        index++;
+        currentcharacter.GetComponent<Character>().dialogue.currentindex++;
         highstate = true;
     }
     public void QuestionNext()
@@ -144,18 +148,17 @@ public class DialogueUI : MonoBehaviour
 
     void SwitchDialogue()
     {
-        if (index >= currentcharacter.GetComponent<Character>().dialogue.DialogueList.Count)
+        if (currentcharacter.GetComponent<Character>().dialogue.currentindex >= currentcharacter.GetComponent<Character>().dialogue.DialogueList.Count)
         {
-            index = 0;
             textfinshed = false;
             dialogueui.gameObject.SetActive(false);
             Player.instance.state = 0;
         }
-        else if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].state == 1)
+        else if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[currentcharacter.GetComponent<Character>().dialogue.currentindex].state == 1)
         {
             StartCoroutine(ShowDialogueButton());
         }
-        else if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].state == 2)
+        else if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[currentcharacter.GetComponent<Character>().dialogue.currentindex].state == 2)
         {
             StartCoroutine(ShowDialogueHigh());
         }
