@@ -16,4 +16,4 @@ MonoBehaviour:
   evidence: 
   clew: "\u957F\u65B9\u5F62"
   state: 1
-  clewitem: {fileID: 0}
+  clewitem: {fileID: 11400000, guid: 9ba833dbf991f194ea564c00e7bfe256, type: 2}

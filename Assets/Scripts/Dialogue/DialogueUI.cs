@@ -17,7 +17,7 @@ public class DialogueUI : MonoBehaviour
     public GameObject QuestionButton;
     public Animator fadeText;
     public string[,] Evidences = new string[99,99];
-    public List<Item> clews;
+    public List<ItemDataSO> clews;
     GameObject currentcharacter;
     int index;
     int eindex;
@@ -67,7 +67,7 @@ public class DialogueUI : MonoBehaviour
         textfinshed = false;
         for(int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
-            Content.text += currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
+            Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
         index++;
@@ -79,17 +79,18 @@ public class DialogueUI : MonoBehaviour
         Content.text = "";
         textfinshed = false;
         int clewindex=0;
-        if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew != "") clews.Add(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem);
+        if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem !=null) clews.Add(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem);
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
-            if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
-                currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew[clewindex])
+            if ((clewindex< currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew.Length) &&   
+                (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
+                currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew[clewindex]))
             {
                 Content.text +=
-                      "<color=red>" + currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] + "</color>";
+                      "<color=red>"+ currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] + "</color>";
                 clewindex++;
             }
-            else Content.text += currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
+            else Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
         QuestionButton.SetActive(true);
@@ -103,17 +104,20 @@ public class DialogueUI : MonoBehaviour
         { Evidences[eindex,0] = currentcharacter.GetComponent<Character>().chname;
          Evidences[eindex, 1] = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence;
         }
+        Debug.Log(Evidences[eindex, 0]+ Evidences[eindex, 1]);
         int evidenceindex = 0;
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
-            if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
-                currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence[evidenceindex])
+            if ((evidenceindex < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence.Length)
+                &&
+                (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
+                currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence[evidenceindex]))
             {
                 Content.text +=
-                      "<color =#00FF01FF>" + currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] + "</color>";
+                      "<color=red>" + currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] + "</color>";
                 evidenceindex++;
             }
-            else Content.text += currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
+            else Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
         index++;

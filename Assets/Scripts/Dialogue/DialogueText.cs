@@ -9,5 +9,5 @@ public class DialogueText : ScriptableObject
     public string evidence; //证言
     public string clew; //线索
     public int state;  //对话状态，0为普通，1为追问，2为高亮消失
-    public Item clewitem;
+    public ItemDataSO clewitem;
 }
