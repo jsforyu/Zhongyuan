@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemData: {fileID: 11400000, guid: 9ba833dbf991f194ea564c00e7bfe256, type: 2}
-  itemstate: 0
+  itemstate: 1
 --- !u!212 &758917575
 SpriteRenderer:
   m_ObjectHideFlags: 0

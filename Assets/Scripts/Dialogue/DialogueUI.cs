@@ -59,6 +59,9 @@ public class DialogueUI : MonoBehaviour
         SwitchDialogue();//Òª¸Ä³Éswitch
         Player.instance.state = 1;
     }
+
+
+
     IEnumerator ShowDialogue()
     {
         Content.text = "";
