@@ -113,10 +113,9 @@ public class DialogueUI : MonoBehaviour
         textfinshed = false;
         index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
         if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence != "")
-        { evidences.Evidences[eindex,0] = currentcharacter.GetComponent<Character>().chname;
-         evidences.Evidences[eindex, 1] = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence;
+        { evidences.npcName.Add(currentcharacter.GetComponent<Character>().chname);
+         evidences.evidence.Add(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence);
         }
-        Debug.Log(evidences.Evidences[eindex, 0]+ evidences.Evidences[eindex, 1]);
         int evidenceindex = 0;
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {

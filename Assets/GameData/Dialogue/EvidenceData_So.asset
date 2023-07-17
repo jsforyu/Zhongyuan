@@ -12,3 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07b5f9f9a2a16540a209a8b9115841f, type: 3}
   m_Name: EvidenceData_So
   m_EditorClassIdentifier: 
+  npcName:
+  - "\u5927\u54E5"
+  - "\u4E8C\u54E5"
+  - "\u4E09\u54E5"
+  - "\u56DB\u54E5"
+  - "\u4E94\u54E5"
+  evidence:
+  - "\u4F60\u597D"
+  - "\u4F60\u597D"
+  - "\u4F60\u597D"
+  - "\u4F60\u597D"
+  - "\u4F60\u597D"
