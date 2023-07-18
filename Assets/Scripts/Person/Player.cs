@@ -90,7 +90,7 @@ public class Player : Character
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<Character>().ID==1)
+        if(collision.gameObject.GetComponent<Character>()!=null)
         {
             id = collision.gameObject.GetComponent<Character>().ID;
             if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
@@ -99,7 +99,12 @@ public class Player : Character
             Debug.Log(id);
             Debug.Log("撞上了");
             if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+            {
+                Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
+                collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
                 collision.gameObject.GetComponent<Character>().Button.SetActive(true);
+
+            }
         }                     //应该按照状态来判断现在先这样
     }
     private void OnTriggerExit2D(Collider2D collision)

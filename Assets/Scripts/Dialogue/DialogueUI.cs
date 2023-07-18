@@ -55,6 +55,7 @@ public class DialogueUI : MonoBehaviour
     }
     public void PreDialogue()
     {
+        Player.instance.state = 1;
         Debug.Log(Player.instance.id);
         currentcharacter = CharacterManager.instance.Characters[Player.instance.id];
         Name.text = currentcharacter.GetComponent<Character>().chname;
@@ -62,7 +63,6 @@ public class DialogueUI : MonoBehaviour
         dialogueui.gameObject.SetActive(true);
         textfinshed = true;
         SwitchDialogue();//Òª¸Ä³Éswitch
-        Player.instance.state = 1;
     }
 
 
