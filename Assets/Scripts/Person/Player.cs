@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : Character
 {
     public static Player instance;
-
     public float speed;
     
     Rigidbody2D ri;
@@ -88,33 +87,38 @@ public class Player : Character
 
     //}
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.gameObject.GetComponent<Character>()!=null)
-    //    {
-    //        id = collision.gameObject.GetComponent<Character>().ID;
-    //        if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
-    //            collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
-    //            return;
-    //        Debug.Log(id);
-    //        Debug.Log("撞上了");
-    //        if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
-    //        {
-    //            Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
-    //            collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
-    //            collision.gameObject.GetComponent<Character>().Button.SetActive(true);
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Character>() != null)
+        {
+            id = collision.gameObject.GetComponent<Character>().ID;
+            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
+                collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+                return;
+            Debug.Log(id);
+            Debug.Log("撞上了");
+            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+            {
+                Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
+                if (collision.gameObject.GetComponent<Character>().Button == null) return;
+                if (collision.gameObject.GetComponent<Character>().state == 1)//可对话状态
+                {
+                    collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
+                    collision.gameObject.GetComponent<Character>().Button.SetActive(true);
+                }
 
-    //        }
-    //    }                     //应该按照状态来判断现在先这样
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.GetComponent<Character>().ID == 1)
-    //    {
-    //        id = collision.gameObject.GetComponent<Character>().ID;
-    //        Debug.Log(id);
-    //        Debug.Log("离开了");
-    //        collision.gameObject.GetComponent<Character>().Button.SetActive(false);
-    //    }
-    //}
+            }
+        }                     //应该按照状态来判断现在先这样
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Character>()!=null)
+        {
+            id = collision.gameObject.GetComponent<Character>().ID;
+            Debug.Log(id);
+            Debug.Log("离开了");
+            if(collision.gameObject.GetComponent<Character>().Button!=null)
+            collision.gameObject.GetComponent<Character>().Button.SetActive(false);
+        }
+    }
 }

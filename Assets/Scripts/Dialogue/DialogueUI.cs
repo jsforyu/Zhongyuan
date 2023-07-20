@@ -17,10 +17,10 @@ public class DialogueUI : MonoBehaviour
     public GameObject QuestionButton;
     public Animator fadeText;
     public EvidenceData evidences;
-    GameObject currentcharacter;
+    public GameObject currentcharacter;
     int index;
     int eindex;
-    bool textfinshed;
+    public bool textfinshed;
     bool highstate=false;
     private void Awake()
     {
@@ -66,10 +66,19 @@ public class DialogueUI : MonoBehaviour
     }
 
 
+    public void ShowDialogueUI()
+    {
+        currentcharacter = CharacterManager.instance.Characters[0];
+        Name.text = Player.instance.chname;
+        dialogueui.gameObject.SetActive(true);
+        textfinshed = true;
+        StartCoroutine(ShowDialogue());
+    }
 
     IEnumerator ShowDialogue()
     {
         Content.text = "";
+        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         Content.color = Color.black;//还原到原来的颜色
         textfinshed = false;
         index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
@@ -85,6 +94,7 @@ public class DialogueUI : MonoBehaviour
     IEnumerator ShowDialogueButton()//高亮后出现按钮
     {
         Content.text = "";
+        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         textfinshed = false;
         int clewindex=0;
         index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
@@ -110,6 +120,7 @@ public class DialogueUI : MonoBehaviour
     IEnumerator ShowDialogueHigh()//高亮，上浮消失
     {
         Content.text = "";
+        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         textfinshed = false;
         index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
         if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence != "")
