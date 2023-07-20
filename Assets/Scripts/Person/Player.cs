@@ -14,6 +14,7 @@ public class Player : Character
     private void Awake()
     {
             instance = this;
+
     }
     void Start()
     {
@@ -51,8 +52,8 @@ public class Player : Character
             isFirstClicked = true;
         }
 
-        float distance = gameObject.transform.position.x -  _targetPos.x;
- 
+        float distance = gameObject.transform.position.x - _targetPos.x;
+
         if (isFirstClicked && Mathf.Abs(distance) > 1f)
         {
             Vector3 dir = (_targetPos - gameObject.transform.position).normalized;
@@ -68,53 +69,52 @@ public class Player : Character
             //gameObject.transform.position = _targetPos;
             anim.SetBool("walk", false);
         }
-        //Move();
     }
-
     private Vector3 _targetPos;
-    private void Move()
-    {
-        if (Input.GetMouseButtonDown(0)&&  state == 0)
-        {
-            mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseposition.z = 0f;
-            mouseposition.y = transform.position.y;
-            //Debug.Log("2"+mouseposition);
-                anim.SetBool("walk", true);
-                ri.MovePosition(mouseposition);
-            Vector3 dir = Vector3.Normalize(mouseposition - ri.gameObject.transform.position);
-            ri.AddForce(dir * 10);
-            //Debug.Log("3" + transform.position);
-        }
+    //private void Move()
+    //{
+    //    if (Input.GetMouseButtonDown(0)&&  state == 0)
+    //    {
+    //        mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        mouseposition.z = 0f;
+    //        mouseposition.y = transform.position.y;
+    //        //Debug.Log("2"+mouseposition);
+    //            anim.SetBool("walk", true);
+    //            ri.MovePosition(mouseposition);
+    //        Vector3 dir = Vector3.Normalize(mouseposition - ri.gameObject.transform.position);
+    //        ri.AddForce(dir * 10);
+    //        //Debug.Log("3" + transform.position);
+    //    }
 
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.GetComponent<Character>()!=null)
-        {
-            id = collision.gameObject.GetComponent<Character>().ID;
-            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
-                collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
-                return;
-            Debug.Log(id);
-            Debug.Log("撞上了");
-            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
-            {
-                Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
-                collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
-                collision.gameObject.GetComponent<Character>().Button.SetActive(true);
+    //}
 
-            }
-        }                     //应该按照状态来判断现在先这样
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Character>().ID == 1)
-        {
-            id = collision.gameObject.GetComponent<Character>().ID;
-            Debug.Log(id);
-            Debug.Log("离开了");
-            collision.gameObject.GetComponent<Character>().Button.SetActive(false);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.gameObject.GetComponent<Character>()!=null)
+    //    {
+    //        id = collision.gameObject.GetComponent<Character>().ID;
+    //        if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
+    //            collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+    //            return;
+    //        Debug.Log(id);
+    //        Debug.Log("撞上了");
+    //        if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+    //        {
+    //            Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
+    //            collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
+    //            collision.gameObject.GetComponent<Character>().Button.SetActive(true);
+
+    //        }
+    //    }                     //应该按照状态来判断现在先这样
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.GetComponent<Character>().ID == 1)
+    //    {
+    //        id = collision.gameObject.GetComponent<Character>().ID;
+    //        Debug.Log(id);
+    //        Debug.Log("离开了");
+    //        collision.gameObject.GetComponent<Character>().Button.SetActive(false);
+    //    }
+    //}
 }
