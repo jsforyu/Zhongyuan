@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca0ba2c6ec1ee4c8ca24bd3a2bdfe6, type: 3}
+  m_Name: 1 1
+  m_EditorClassIdentifier: 
+  npcName: "\u738B\u5174"
+  dialoguetext: "\u201C\u5B59\u5927\u54E5\u4ECA\u65E5\u518D\u5EA6\u73B0\u8EAB\uFF0C\u8FD8\u7ED9\u4E86\u8FCE\u513F\u4E00\u5F20\u5B57\u6761\uFF0C\u6211\u4EEC\u60F3\u8BF7\u60A8\u770B\u770B\u8FD9\u5F53\u4E2D\u6709\u4F55\u6DF1\u610F\u3002\u201D"
+  evidence: 
+  clew: 
+  state: 0
+  clewitem: {fileID: 0}

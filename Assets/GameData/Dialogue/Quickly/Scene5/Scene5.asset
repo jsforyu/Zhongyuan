@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
+  m_Name: Scene5
+  m_EditorClassIdentifier: 
+  DialogueList:
+  - {fileID: 11400000, guid: b21614e75069de6439b8f201be2b4675, type: 2}
+  - {fileID: 11400000, guid: 4ed937c8f03fb7444ad615bc8c708c11, type: 2}
+  - {fileID: 11400000, guid: 161236d50d7bb47499bd501d7bf4deb9, type: 2}
+  - {fileID: 11400000, guid: 21ea3b22b48a122459d034027712e4c9, type: 2}
+  - {fileID: 11400000, guid: ba9f3f4b5c70b8445bf780dcfc4ee3e5, type: 2}
+  - {fileID: 11400000, guid: c54125f8ee7a0734ebff59e3f45f4b2a, type: 2}
+  - {fileID: 11400000, guid: 1efbf862957536a4491f95ed87eb261d, type: 2}
+  - {fileID: 11400000, guid: 907e2cf8aa99a0b42a4fe6e033597620, type: 2}
+  - {fileID: 11400000, guid: ab9545d63c08f944fb523652f01dbb53, type: 2}
+  - {fileID: 11400000, guid: 1e38517099dddf34dbd19cbd20de46d5, type: 2}
+  currentindex: 0

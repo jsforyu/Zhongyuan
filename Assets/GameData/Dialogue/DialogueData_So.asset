@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
   m_Name: DialogueData_So
   m_EditorClassIdentifier: 
-  DialogueList: []
+  DialogueList:
+  - {fileID: 11400000, guid: 3a3ec61c67410dc47b3837288d1a898f, type: 2}
+  - {fileID: 0}
   currentindex: 0
