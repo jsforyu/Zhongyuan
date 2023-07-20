@@ -19,6 +19,7 @@ public class Scene51 : MonoBehaviour
 
     [SerializeField] private ItemDataSO targetData;
 
+    [SerializeField] private GameObject huiyi;
     private AudioSource audioSource;
     private int index = -1;
 
@@ -43,7 +44,8 @@ public class Scene51 : MonoBehaviour
             showtime = 0;
             if (index >= dialogueData_So.DialogueList.Count)
             {
-                return;
+                huiyi.SetActive(true);
+                this.enabled = false;
             }
             else
             {
