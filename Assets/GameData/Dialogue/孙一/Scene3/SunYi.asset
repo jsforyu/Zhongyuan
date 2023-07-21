@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
+  m_Name: SunYi
+  m_EditorClassIdentifier: 
+  DialogueList:
+  - {fileID: 11400000, guid: 803b53f8c1549134b8c4155311703556, type: 2}
+  - {fileID: 11400000, guid: 340ef9609425f374c823775b31ee39e8, type: 2}
+  - {fileID: 11400000, guid: c9dc74a314857e846ab2ea8602dde99a, type: 2}
+  - {fileID: 11400000, guid: dd804d3e67784904893f60ccbb4596f0, type: 2}
+  - {fileID: 11400000, guid: b833b4adb89db0747a037f6bbee1c0ee, type: 2}
+  - {fileID: 11400000, guid: cbba9cbb6094b8649baf24b7ebb61dd1, type: 2}
+  - {fileID: 11400000, guid: df1724bc9c0e8df44991c9420f0f99ad, type: 2}
+  currentindex: 0
+  Changeindex: 
