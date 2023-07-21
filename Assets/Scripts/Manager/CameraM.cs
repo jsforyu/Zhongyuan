@@ -37,10 +37,8 @@ public class CameraM : MonoBehaviour
 
     public void FollowPlayer()
     {
-
-            if (Player.instance.transform.position != transform.position)//相机和角色位置不相等的时候
-            {
-                transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position, movetime * Time.deltaTime);
-            }
+        Vector3 offset =Player.instance.transform.position - transform.position;
+        if(Mathf.Abs(offset.x)>5)
+        transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position - offset, Time.deltaTime * 5);
     }
 }
