@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class Player : Character
 {
@@ -18,7 +20,7 @@ public class Player : Character
     private void Awake()
     {
             instance = this;
-
+        target = transform.position;
     }
     void Start()
     {
@@ -44,12 +46,21 @@ public class Player : Character
         //{
         //    transform.position = transform.position;
         //}
-        if(Input.GetMouseButtonDown(0))
+        if(state==0&& Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if ((target.x > transform.position.x &&transform.localScale.x>0)||(target.x < transform.position.x && transform.localScale.x < 0))
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
+            target.y = transform.position.y;
             target.z = 0;
         }
-        Move();
+        if(state==0) Move();
     }
     public float Speed;
     private bool isFirstClicked;

@@ -55,6 +55,7 @@ public class DialogueUI : MonoBehaviour
     }
     public void PreDialogue()
     {
+        Player.instance.transform.position = Player.instance.transform.position;
         Player.instance.state = 1;
         Debug.Log(Player.instance.id);
         currentcharacter = CharacterManager.instance.Characters[Player.instance.id];
