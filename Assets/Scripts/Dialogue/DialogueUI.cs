@@ -78,10 +78,10 @@ public class DialogueUI : MonoBehaviour
     IEnumerator ShowDialogue()
     {
         Content.text = "";
-        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         Content.color = Color.black;//还原到原来的颜色
         textfinshed = false;
         index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
+        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
         {
             Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];

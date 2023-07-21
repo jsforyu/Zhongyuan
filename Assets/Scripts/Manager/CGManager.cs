@@ -5,11 +5,13 @@ using UnityEngine;
 public class CGManager : MonoBehaviour
 {
     
-    public GameObject[] cgs=new GameObject[11];
-    public AudioClip[] audios = new AudioClip[11];
+    public GameObject[] cgs=new GameObject[8];
+    public AudioClip[] audios = new AudioClip[3];
     public AudioSource source;
-    int index = 0;
+    public GameObject Panel;
 
+    int index = 0;
+    bool cgfinished;
     void Start()
     {
         source = GetComponent<AudioSource>();
@@ -24,17 +26,24 @@ public class CGManager : MonoBehaviour
     
     void NextCG()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&!cgfinished)
         {
-            cgs[index].GetComponent<AudioSource>().clip = audios[0];
-            cgs[index].GetComponent<AudioSource>().Play();
-            cgs[index].SetActive(false);
-            cgs[++index].SetActive(true);
-            //source.PlayOneShot(audios[0]);//翻书的音效
-            if (index >= 11)
+            if (index == 7)
             {
-                //切换下一个场景
+                cgs[index].SetActive(false);
+                Panel.SetActive(true);
+                cgfinished = true;
+                Debug.Log("cg播完");
             }
+            else
+            {
+                cgs[index].SetActive(false);
+                cgs[++index].SetActive(true);
+                source.PlayOneShot(audios[0]);
+            }//翻书的音效
         }
     }
+
+    
+
 }
