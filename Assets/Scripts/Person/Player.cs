@@ -50,6 +50,7 @@ public class Player : Character
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
+                Debug.Log("µãµ½UI");
                 return;
             }
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -127,10 +128,12 @@ public class Player : Character
     {
         if(Vector3.Distance(transform.position, target)<0.1f)
         {
+            anim.SetBool("walk", false);
             transform.position = target;
         }
         if(transform.position!=target)
         {
+            anim.SetBool("walk", true);
             transform.position =Vector3.MoveTowards(transform.position,target,speed*Time.deltaTime);
         }
     }
