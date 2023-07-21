@@ -6,7 +6,7 @@ public class Player : Character
 {
     public static Player instance;
     public float speed;
-    
+
     Rigidbody2D ri;
     public int id; //前一个对话npc的id
     Vector3 mouseposition;
@@ -33,6 +33,12 @@ public class Player : Character
         */
 
         //Move();
+
+
+        if (state == 1)
+        {
+            transform.position = transform.position;
+        }
     }
     public float Speed;
     private bool isFirstClicked;
@@ -43,7 +49,7 @@ public class Player : Character
         {
             return;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (state==0&& Input.GetMouseButtonDown(0))
         {
             _targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _targetPos.z = 0;
@@ -57,20 +63,25 @@ public class Player : Character
 
         float distance = gameObject.transform.position.x - _targetPos.x;
 
-        if (isFirstClicked && Mathf.Abs(distance) > 1f)
+        if (isFirstClicked )
         {
-            Vector3 dir = (_targetPos - gameObject.transform.position).normalized;
-            dir.z = 0;
-            dir.y = 0;
-            ri.velocity = dir * speed * Time.deltaTime;
-            anim.SetBool("walk", true);
-        }
-        else
-        {
-            ri.velocity = Vector2.zero;
-            _targetPos = gameObject.transform.position;
-            //gameObject.transform.position = _targetPos;
-            anim.SetBool("walk", false);
+            if (Mathf.Abs(distance) > 0.5f)
+            {
+                Vector3 dir = (_targetPos - gameObject.transform.position).normalized;
+                dir.z = 0;
+                dir.y = 0;
+                //ri.velocity = dir * speed * Time.deltaTime;
+                ri.AddForce(dir * speed);
+                anim.SetBool("walk", true);
+            }
+            else
+            {
+                ri.velocity = Vector2.zero;
+                _targetPos = gameObject.transform.position;
+                isFirstClicked = false;
+                //gameObject.transform.position = _targetPos;
+                anim.SetBool("walk", false);
+            }
         }
     }
     private Vector3 _targetPos;
@@ -103,6 +114,7 @@ public class Player : Character
             Debug.Log("撞上了");
             if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
             {
+                Debug.Log("准备对话");
                 Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
                 if (collision.gameObject.GetComponent<Character>().Button == null) return;
                 if (collision.gameObject.GetComponent<Character>().state == 1)//可对话状态
