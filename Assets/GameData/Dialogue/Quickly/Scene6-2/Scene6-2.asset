@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
+  m_Name: Scene6-2
+  m_EditorClassIdentifier: 
+  DialogueList:
+  - {fileID: 11400000, guid: 57fec760afd0eaa4babd9d7e22affa15, type: 2}
+  - {fileID: 11400000, guid: 97ef3a0c60def8e4d987fb897f8cb862, type: 2}
+  - {fileID: 11400000, guid: f672cd4fd014cdb418fec617cb496e95, type: 2}
+  - {fileID: 11400000, guid: 8a7373d7f2a7122419fbd9065c48542a, type: 2}
+  - {fileID: 11400000, guid: 97b3039b07886784eb3714f464df2a86, type: 2}
+  - {fileID: 11400000, guid: cf42300510d5b7b49bbc995621a3f305, type: 2}
+  - {fileID: 11400000, guid: db6e636c16ee5674d9489e47fa58bee2, type: 2}
+  - {fileID: 11400000, guid: aee371fb79ae3844a9f62aa4f715ebb8, type: 2}
+  currentindex: 0
+  Changeindex: 

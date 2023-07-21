@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Scene62 : MonoBehaviour
@@ -15,6 +16,10 @@ public class Scene62 : MonoBehaviour
     [SerializeField] private Text dialogue;
 
     [SerializeField] private GameObject xiansuo;
+
+    [SerializeField] private GameObject[] xuanxiang;
+
+    [SerializeField] private Scene63 scene63;
 
     private AudioSource audioSource;
     private int index = 0;
@@ -39,10 +44,14 @@ public class Scene62 : MonoBehaviour
             index++;
             isok = false;
             showtime = 0;
-            if (index >= dialogueData_So.DialogueList.Count)
+            if (index >= dialogueData_So.DialogueList.Count&& !EventSystem.current.IsPointerOverGameObject())
             {
-                xiansuo.SetActive(true);
-                this.enabled = false;
+                npcName.text = dialogueData_So.DialogueList[index-1].npcName;
+                dialogue.text = dialogueData_So.DialogueList[index - 1].dialoguetext;
+                foreach (GameObject xuan in xuanxiang)
+                {
+                    xuan.SetActive(true);
+                }
             }
             else
             {
@@ -56,6 +65,32 @@ public class Scene62 : MonoBehaviour
         {
             showtime = 0;
             isok = true;
+        }
+    }
+    public void Answer1()
+    {
+        npcName.text = "迎儿";
+        dialogue.DOText("“王兴哥哥，这时候就莫要开玩笑了。”", 1f);
+        foreach(GameObject xuan in xuanxiang)
+        {
+            xuan.SetActive(false);
+        }
+    }
+
+    public void Answer2()
+    {
+        scene63.enabled = true;
+        this.enabled = false;
+
+    }
+
+    public void Answer3()
+    {
+        npcName.text = "李杰";
+        dialogue.DOText("“哎哎哎？小兄弟你可别吓我！咱们不是站在一边的吗？这玩笑可不能随便开！”", 1f);
+        foreach (GameObject xuan in xuanxiang)
+        {
+            xuan.SetActive(false);
         }
     }
 }

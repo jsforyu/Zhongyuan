@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 241074129}
   - component: {fileID: 241074133}
   - component: {fileID: 241074134}
+  - component: {fileID: 241074135}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -995,6 +996,23 @@ MonoBehaviour:
   bag: {fileID: 11400000, guid: d9dc2eb0bc5435b419403260d95a0df4, type: 2}
   npcName: {fileID: 1622657296}
   dialogue: {fileID: 787167869}
+  xiansuo: {fileID: 0}
+--- !u!114 &241074135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241074128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30842eba2309504cafb33d324cbb073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueData_So: {fileID: 0}
+  bag: {fileID: 0}
+  npcName: {fileID: 0}
+  dialogue: {fileID: 0}
   xiansuo: {fileID: 0}
 --- !u!1001 &330341554
 PrefabInstance:
@@ -2411,7 +2429,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148667017}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16b25e72f79d87a4cb90beee1508886b, type: 3}
   m_Name: 
