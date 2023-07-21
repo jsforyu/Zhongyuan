@@ -14,6 +14,8 @@ public class Scene52 : MonoBehaviour
     [SerializeField] private Text dialogue;
 
     [SerializeField] private GameObject huiyi;
+
+    [SerializeField] private GameObject duihua;
     private AudioSource audioSource;
     private int index = 0;
 
@@ -26,7 +28,7 @@ public class Scene52 : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         npcName.text = dialogueData_So.DialogueList[index].npcName;
-        dialogue.DOText(dialogueData_So.DialogueList[index].dialoguetext, 1f);
+        dialogue.text = dialogueData_So.DialogueList[index].dialoguetext;
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class Scene52 : MonoBehaviour
             if (index >= dialogueData_So.DialogueList.Count)
             {
                 huiyi.SetActive(true);
+                duihua.SetActive(false);
                 this.enabled = false;
             }
             else

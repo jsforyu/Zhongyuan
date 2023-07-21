@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b0ec330fd563f4419bb81911546a3de, type: 3}
-  m_Name: Item 1
+  m_Script: {fileID: 11500000, guid: 61ca0ba2c6ec1ee4c8ca24bd3a2bdfe6, type: 3}
+  m_Name: 1 31
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  itemDescription: "\u8FD9\u662F\u4E00\u4E2A\u6B63\u65B9\u5F62 \u80FD\u548C\u7403\u5408\u6210"
+  npcName: "\u6768\u6C0F"
+  dialoguetext: "\u201C\u4F60\u8FD9\u5C0F\u2014\u2014\u201D"
+  evidence: 
+  clew: 
+  state: 0
+  clewitem: {fileID: 0}

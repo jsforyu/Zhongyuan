@@ -12,5 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
   m_Name: Scene5-3
   m_EditorClassIdentifier: 
-  DialogueList: []
+  DialogueList:
+  - {fileID: 11400000, guid: bcbab79379da44649a45e47d0a4e66fc, type: 2}
+  - {fileID: 11400000, guid: 9e347f8b4b58bd141a1c891e87295964, type: 2}
+  - {fileID: 11400000, guid: 2d348327a76ca784498afc36bfe50a61, type: 2}
+  - {fileID: 11400000, guid: 9c25d9f5cf90a2648a63e99b2488dccf, type: 2}
+  - {fileID: 11400000, guid: 5a38882a58a8ac34c8ee833145ed3bfd, type: 2}
+  - {fileID: 11400000, guid: a127ab8d44df519439be6c6b07549574, type: 2}
+  - {fileID: 11400000, guid: 41f42a2148faa0542bddeaa25c04c6da, type: 2}
+  - {fileID: 11400000, guid: a3b6a6faf85acc04d95788f5132d4999, type: 2}
+  - {fileID: 11400000, guid: f87295a051b407949a23f73361de7f55, type: 2}
+  - {fileID: 11400000, guid: b3b1c7251b43b1f4487c5b37680782f2, type: 2}
+  - {fileID: 11400000, guid: 0a6ff3d21777c6949baabce7211470b8, type: 2}
+  - {fileID: 11400000, guid: 5d13fb35e386e104997d4de3364b82ff, type: 2}
+  - {fileID: 11400000, guid: 7e8347aabcee1af4aacdc23d3c728455, type: 2}
+  - {fileID: 11400000, guid: 80678e0d565f40d44b598ca43c1d7cd4, type: 2}
   currentindex: 0
+  Changeindex: 

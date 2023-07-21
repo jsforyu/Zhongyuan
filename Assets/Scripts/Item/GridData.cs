@@ -16,6 +16,7 @@ public class GridData : BaseUI
                 if (itemData != null)
                 {
                     BagController.Instance.BagSelectItem(itemData);
+                    BagController.Instance.SetCurrentData(itemData);
                 }
             }
             else if (Input.GetMouseButtonDown(1))

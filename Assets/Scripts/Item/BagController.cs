@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class BagController : Singleton<BagController>
 {
+    public Scene63 scene63;
+
     [SerializeField] private BagDataSO bagData;
 
     [SerializeField] private GameObject[] grids;
@@ -24,6 +26,12 @@ public class BagController : Singleton<BagController>
 
     [SerializeField] private Image itemComSprite_02;
 
+    [Header("出示证物")]
+
+    [SerializeField] private ItemDataSO[] itemDatas;
+
+    private ItemDataSO currentData;
+
     private ItemDataSO itemCom_01;
 
     private ItemDataSO itemCom_02;
@@ -31,6 +39,9 @@ public class BagController : Singleton<BagController>
     private bool isopen = false;
 
     private List<ItemDataSO> itemDataLists = new List<ItemDataSO>();
+
+    private int itemIndex = 0;
+
 
     private void Start()
     {
@@ -87,6 +98,7 @@ public class BagController : Singleton<BagController>
 
     public void BagSelectItem(ItemDataSO itemdata)
     {
+        itemSprite.color = new Color(1, 1, 1, 1);
         itemSprite.sprite = itemdata.itemSprite;
         itemDes.text = itemdata.itemDescription;
     }
@@ -97,6 +109,7 @@ public class BagController : Singleton<BagController>
         {
             itemCom_01 = itemdata;
             itemComSprite_01.sprite = itemdata.itemSprite;
+            itemComSprite_01.color = new Color(1, 1, 1, 1);
         }
         else
         {
@@ -111,6 +124,13 @@ public class BagController : Singleton<BagController>
                 {
                     if(itemCom_02==itemcompositings.secondItem)
                     {
+                        for(int i=0;i<itemDataLists.Count;i++)
+                        {
+                            if (itemDataLists[i] == itemCom_01 || itemDataLists[i]==itemCom_02)
+                            {
+                                itemDataLists[i] = null;
+                            }
+                        }
                        for(int i=0;i<itemDataLists.Count;i++)
                         {
                             if (itemDataLists[i]==null)
@@ -128,6 +148,13 @@ public class BagController : Singleton<BagController>
                     {
                         for (int i = 0; i < itemDataLists.Count; i++)
                         {
+                            if (itemDataLists[i] == itemCom_01 || itemDataLists[i] == itemCom_02)
+                            {
+                                itemDataLists[i] = null;
+                            }
+                        }
+                        for (int i = 0; i < itemDataLists.Count; i++)
+                        {
                             if (itemDataLists[i] == null)
                             {
                                 itemDataLists[i] = itemcompositings.targetItem;
@@ -140,7 +167,32 @@ public class BagController : Singleton<BagController>
             }
             itemCom_01 = itemCom_02 = null;
             itemComSprite_01.sprite = itemComSprite_02.sprite = null;
+            itemComSprite_01.color =itemComSprite_02.color= new Color(1, 1, 1, 0);
             BagUpdate();
+        }
+    }
+
+    public void SetCurrentData(ItemDataSO itemData)
+    {
+        currentData = itemData;
+    }
+    
+    public void JudgeItem()
+    {
+        if (currentData == itemDatas[itemIndex])
+        {
+            for(int i=0;i<itemDataLists.Count;i++)
+            {
+                if (itemDataLists[i]==currentData)
+                {
+                    itemDataLists[i] = null;
+                    itemSprite.color=new Color(1,1,1,0);
+                    itemDes.text = "";
+                    itemIndex++;
+                    Scene63.Instance.isstop = false;
+                    gameObject.SetActive(false);
+                }
+            }
         }
     }
 }

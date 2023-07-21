@@ -20,6 +20,7 @@ public class Scene51 : MonoBehaviour
     [SerializeField] private ItemDataSO targetData;
 
     [SerializeField] private GameObject huiyi;
+
     private AudioSource audioSource;
     private int index = -1;
 

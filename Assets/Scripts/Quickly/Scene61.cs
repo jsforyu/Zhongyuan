@@ -33,15 +33,18 @@ public class Scene61 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && isok)
+        if (index >= dialogueData_So.DialogueList.Count)
+        {
+            xiansuo.SetActive(true);
+        }
+        else if (Input.GetMouseButton(0) && isok)
         {
             index++;
             isok = false;
             showtime = 0;
             if (index >= dialogueData_So.DialogueList.Count)
             {
-                xiansuo.SetActive(true);
-                this.enabled = false;
+                return;
             }
             else
             {

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20eab9f31e75ca419cad01a58045764, type: 3}
   m_Name: ItemCom
   m_EditorClassIdentifier: 
-  firstItem: {fileID: 11400000, guid: 3663560d9f647a446bce854d71a6d45c, type: 2}
-  secondItem: {fileID: 11400000, guid: 9ba833dbf991f194ea564c00e7bfe256, type: 2}
-  targetItem: {fileID: 11400000, guid: 3667c30fdca6fe642ab180c466f17014, type: 2}
+  firstItem: {fileID: 11400000, guid: a717fa725e71d3b41a8d55cd6f1811e3, type: 2}
+  secondItem: {fileID: 11400000, guid: 041fe6f0179e6894aaeb5639ea88b476, type: 2}
+  targetItem: {fileID: 11400000, guid: c133c4368f79ebc40bae09ceb53be94c, type: 2}
