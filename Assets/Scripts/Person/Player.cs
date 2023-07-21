@@ -47,6 +47,10 @@ public class Player : Character
         {
             _targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _targetPos.z = 0;
+            if ((_targetPos.x < transform.position.x && transform.localScale.x < 0)||(_targetPos.x > transform.position.x && transform.localScale.x > 0))
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
             //dir = _targetPos - gameObject.transform.position;
             isFirstClicked = true;
         }
