@@ -15,10 +15,6 @@ public class CameraM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cameraAnim.GetBool("return") == true)
-        {
-            FollowPlayer();
-        }
     }
 
     public void EndAnim()
@@ -33,12 +29,19 @@ public class CameraM : MonoBehaviour
         DialogueUI.instance.ShowDialogueUI();
         
     }
-
+    private void LateUpdate()
+    {
+        if (cameraAnim.GetBool("return") == true)
+        {
+            FollowPlayer();
+        }
+    }
 
     public void FollowPlayer()
     {
-        Vector3 offset =Player.instance.transform.position - transform.position;
-        if(Mathf.Abs(offset.x)>5)
-        transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position - offset, Time.deltaTime * 5);
+        transform.position = new Vector3(Player.instance.transform.position.x,0,-10);
+        //Vector3 offset =Player.instance.transform.position - transform.position;
+        //if(Mathf.Abs(offset.x)>5)
+        //transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position - offset, Time.deltaTime * 5);
     }
 }
