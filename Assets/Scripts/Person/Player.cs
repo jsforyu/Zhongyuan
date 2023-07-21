@@ -7,9 +7,14 @@ public class Player : Character
     public static Player instance;
     public float speed;
 
+    private Vector3 target;
+
     Rigidbody2D ri;
+
     public int id; //前一个对话npc的id
+
     Vector3 mouseposition;
+
     private void Awake()
     {
             instance = this;
@@ -35,55 +40,61 @@ public class Player : Character
         //Move();
 
 
-        if (state == 1)
+        //if (state == 1)
+        //{
+        //    transform.position = transform.position;
+        //}
+        if(Input.GetMouseButtonDown(0))
         {
-            transform.position = transform.position;
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target.z = 0;
         }
+        Move();
     }
     public float Speed;
     private bool isFirstClicked;
 
-    private void FixedUpdate()
-    {
-        if(state != 0)
-        {
-            return;
-        }
-        if (state==0&& Input.GetMouseButtonDown(0))
-        {
-            _targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _targetPos.z = 0;
-            if ((_targetPos.x < transform.position.x && transform.localScale.x < 0)||(_targetPos.x > transform.position.x && transform.localScale.x > 0))
-            {
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            }
-            //dir = _targetPos - gameObject.transform.position;
-            isFirstClicked = true;
-        }
+    //private void FixedUpdate()
+    //{
+    //    if(state != 0)
+    //    {
+    //        return;
+    //    }
+    //    if (state==0&& Input.GetMouseButtonDown(0))
+    //    {
+    //        _targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        _targetPos.z = 0;
+    //        if ((_targetPos.x < transform.position.x && transform.localScale.x < 0)||(_targetPos.x > transform.position.x && transform.localScale.x > 0))
+    //        {
+    //            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    //        }
+    //        //dir = _targetPos - gameObject.transform.position;
+    //        isFirstClicked = true;
+    //    }
 
-        float distance = gameObject.transform.position.x - _targetPos.x;
+    //    float distance = gameObject.transform.position.x - _targetPos.x;
 
-        if (isFirstClicked )
-        {
-            if (Mathf.Abs(distance) > 0.5f)
-            {
-                Vector3 dir = (_targetPos - gameObject.transform.position).normalized;
-                dir.z = 0;
-                dir.y = 0;
-                //ri.velocity = dir * speed * Time.deltaTime;
-                ri.AddForce(dir * speed);
-                anim.SetBool("walk", true);
-            }
-            else
-            {
-                ri.velocity = Vector2.zero;
-                _targetPos = gameObject.transform.position;
-                isFirstClicked = false;
-                //gameObject.transform.position = _targetPos;
-                anim.SetBool("walk", false);
-            }
-        }
-    }
+    //    if (isFirstClicked )
+    //    {
+    //        if (Mathf.Abs(distance) > 0.5f)
+    //        {
+    //            Vector3 dir = (_targetPos - gameObject.transform.position).normalized;
+    //            dir.z = 0;
+    //            dir.y = 0;
+    //            //ri.velocity = dir * speed * Time.deltaTime;
+    //            ri.AddForce(dir * speed);
+    //            anim.SetBool("walk", true);
+    //        }
+    //        else
+    //        {
+    //            ri.velocity = Vector2.zero;
+    //            _targetPos = gameObject.transform.position;
+    //            isFirstClicked = false;
+    //            //gameObject.transform.position = _targetPos;
+    //            anim.SetBool("walk", false);
+    //        }
+    //    }
+    //}
     private Vector3 _targetPos;
     //private void Move()
     //{
@@ -101,6 +112,17 @@ public class Player : Character
     //    }
 
     //}
+    private void Move()
+    {
+        if(Vector3.Distance(transform.position, target)<0.1f)
+        {
+            transform.position = target;
+        }
+        if(transform.position!=target)
+        {
+            transform.position =Vector3.MoveTowards(transform.position,target,speed*Time.deltaTime);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
