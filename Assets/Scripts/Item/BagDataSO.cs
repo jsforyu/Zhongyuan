@@ -5,4 +5,6 @@ using UnityEngine;
 public class BagDataSO : ScriptableObject
 {
     public List<ItemDataSO> itemData;
+
+    public int sceneid;
 }

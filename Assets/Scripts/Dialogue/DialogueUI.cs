@@ -38,7 +38,7 @@ public class DialogueUI : MonoBehaviour
 
     private void Update()
     {
-
+        SaveManager.Instance.Save(evidences,"evidences");//存储证言
         //三种显示效果，追击询问，自动获得，普通效果
         //每句对话有个状态，分别对应三种显示效果，
         if (Input.GetMouseButtonDown(0) && Player.instance.state == 1&&textfinshed)

@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
     public static Player instance;
     public float speed;
-
     private Vector3 target;
 
     Rigidbody2D ri;
@@ -31,6 +30,7 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
+        BagController.Instance.bagData.sceneid = SceneManager.GetActiveScene().buildIndex;
         /*
         if (Vector3.Distance(transform.position, mouseposition) < 0.01f)
         {

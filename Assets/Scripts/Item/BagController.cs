@@ -8,7 +8,7 @@ public class BagController : Singleton<BagController>
 {
     public Scene63 scene63;
 
-    [SerializeField] private BagDataSO bagData;
+    [SerializeField] public BagDataSO bagData;
 
     [SerializeField] private GameObject[] grids;
 
@@ -49,6 +49,10 @@ public class BagController : Singleton<BagController>
     }
     private void Update()
     {
+        SaveManager.Instance.Save(bagData, "bag");
+
+
+
         BagOpen();
     }
     private void BagOpen()
