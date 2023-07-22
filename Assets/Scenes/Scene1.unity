@@ -1414,10 +1414,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   chname: "\u738B\u5174"
-  dialogue: {fileID: 11400000, guid: 453c35577057aa845bb9665b4bf01a67, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: 453c35577057aa845bb9665b4bf01a67, type: 2}
   state: 0
   anim: {fileID: 661930499}
   Button: {fileID: 0}
+  dialogueindex: 0
   speed: 2
   id: 0
   Speed: 2
@@ -1979,10 +1981,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   chname: "\u6768\u6C0F"
-  dialogue: {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
-  state: 0
+  dialogue:
+  - {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
+  state: 1
   anim: {fileID: 1144963395}
   Button: {fileID: 0}
+  dialogueindex: 0
 --- !u!95 &1144963395
 Animator:
   serializedVersion: 4
@@ -2870,10 +2874,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   chname: "\u5B59\u6587"
-  dialogue: {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
-  state: 1
+  dialogue:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  state: 0
   anim: {fileID: 1621238363}
   Button: {fileID: 123107116}
+  dialogueindex: 0
 --- !u!70 &1621238366
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3192,10 +3200,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   chname: "\u674E\u6770"
-  dialogue: {fileID: 11400000, guid: 524f24d2bb0f9924bac25ad40e5c163b, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: 524f24d2bb0f9924bac25ad40e5c163b, type: 2}
+  - {fileID: 11400000, guid: 2665a11f6cb998f45b9f754e0fe2ee89, type: 2}
   state: 1
   anim: {fileID: 0}
   Button: {fileID: 123107116}
+  dialogueindex: 0
 --- !u!70 &1841245798
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
