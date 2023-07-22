@@ -7,8 +7,12 @@ public class CameraM : MonoBehaviour
     public Animator cameraAnim;
     public GameObject dialogueui;
     public float movetime;
+    public BoxCollider2D coll;
+    public BoxCollider2D backcoll;
+
     void Start()
     {
+        coll = GetComponent<BoxCollider2D>();
         cameraAnim.SetBool("return",false);
     }
 
@@ -39,8 +43,14 @@ public class CameraM : MonoBehaviour
 
     public void FollowPlayer()
     {
-        if (transform.position.x <= -20.7||transform.position.x>=20.7)
+        if (Player.instance.transform.position.x<=(coll.bounds.size.x/2+backcoll.bounds.min.x))
         {
+            transform.position = new Vector3(coll.bounds.size.x / 2 + backcoll.bounds.min.x, 0, transform.position.z);
+            return;
+        }
+        if(Player.instance.transform.position.x >= (backcoll.bounds.max.x-coll.bounds.size.x / 2 ))
+        {
+            transform.position = new Vector3(backcoll.bounds.max.x - coll.bounds.size.x / 2, 0, transform.position.z);
             return;
         }
         else transform.position = new Vector3(Player.instance.transform.position.x,0,-10);

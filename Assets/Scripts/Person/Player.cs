@@ -160,7 +160,11 @@ public class Player : Character
                 }
 
             }
-        }                     //应该按照状态来判断现在先这样
+        }
+        if (collision.gameObject.tag == "Edge")
+        {
+            state =1;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -171,6 +175,10 @@ public class Player : Character
             Debug.Log("离开了");
             if(collision.gameObject.GetComponent<Character>().Button!=null)
             collision.gameObject.GetComponent<Character>().Button.SetActive(false);
+        }
+        if (collision.gameObject.tag == "Edge")
+        {
+            state = 0;
         }
     }
 }
