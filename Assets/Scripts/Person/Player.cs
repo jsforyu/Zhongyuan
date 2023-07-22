@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class Player : Character
 {
@@ -18,7 +20,7 @@ public class Player : Character
     private void Awake()
     {
             instance = this;
-
+        target = transform.position;
     }
     void Start()
     {
@@ -44,12 +46,22 @@ public class Player : Character
         //{
         //    transform.position = transform.position;
         //}
-        if(Input.GetMouseButtonDown(0))
+        if(state==0&& Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("点到UI");
+                return;
+            }
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if ((target.x > transform.position.x &&transform.localScale.x>0)||(target.x < transform.position.x && transform.localScale.x < 0))
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
+            target.y = transform.position.y;
             target.z = 0;
         }
-        Move();
+        if(state==0) Move();
     }
     public float Speed;
     private bool isFirstClicked;
@@ -116,10 +128,12 @@ public class Player : Character
     {
         if(Vector3.Distance(transform.position, target)<0.1f)
         {
+            anim.SetBool("walk", false);
             transform.position = target;
         }
         if(transform.position!=target)
         {
+            anim.SetBool("walk", true);
             transform.position =Vector3.MoveTowards(transform.position,target,speed*Time.deltaTime);
         }
     }
@@ -146,7 +160,11 @@ public class Player : Character
                 }
 
             }
-        }                     //应该按照状态来判断现在先这样
+        }
+        if (collision.gameObject.tag == "Edge")
+        {
+            state =1;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -157,6 +175,10 @@ public class Player : Character
             Debug.Log("离开了");
             if(collision.gameObject.GetComponent<Character>().Button!=null)
             collision.gameObject.GetComponent<Character>().Button.SetActive(false);
+        }
+        if (collision.gameObject.tag == "Edge")
+        {
+            state = 0;
         }
     }
 }

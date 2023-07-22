@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueList:
   - {fileID: 11400000, guid: 2da56b42298d5e64794156bb41bb39eb, type: 2}
+  - {fileID: 11400000, guid: f91fbd6b9ded6874992bfba42b7b0873, type: 2}
   currentindex: 0
   Changeindex: 
