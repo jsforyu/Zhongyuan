@@ -39,7 +39,11 @@ public class CameraM : MonoBehaviour
 
     public void FollowPlayer()
     {
-        transform.position = new Vector3(Player.instance.transform.position.x,0,-10);
+        if (transform.position.x <= -20.7||transform.position.x>=20.7)
+        {
+            return;
+        }
+        else transform.position = new Vector3(Player.instance.transform.position.x,0,-10);
         //Vector3 offset =Player.instance.transform.position - transform.position;
         //if(Mathf.Abs(offset.x)>5)
         //transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position - offset, Time.deltaTime * 5);

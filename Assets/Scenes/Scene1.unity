@@ -221,8 +221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.94, y: 8.58}
-  m_SizeDelta: {x: 328.8199, y: 147.8047}
+  m_AnchoredPosition: {x: -8.9832, y: 9.2434}
+  m_SizeDelta: {x: 116.864, y: 78.9879}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &223870081
 GameObject:
@@ -976,7 +976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: b9b6f53bfd1c57b48a0132a0cabcbd0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.78
+      value: -3.92
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: b9b6f53bfd1c57b48a0132a0cabcbd0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2607,6 +2607,7 @@ MonoBehaviour:
   - {fileID: 661930497}
   - {fileID: 1144963393}
   - {fileID: 1621238362}
+  - {fileID: 1841245794}
 --- !u!4 &1533946629
 Transform:
   m_ObjectHideFlags: 0
@@ -2861,7 +2862,23 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
   state: 1
   anim: {fileID: 1621238363}
-  Button: {fileID: 223870081}
+  Button: {fileID: 123107116}
+--- !u!70 &1621238366
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621238362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5070734, y: 10.435657}
+  m_Size: {x: 6.362953, y: 18.586578}
+  m_Direction: 0
 --- !u!1001 &1841245793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3028,12 +3045,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b25e72f79d87a4cb90beee1508886b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  chname: 
-  dialogue: {fileID: 0}
-  state: 0
+  ID: 3
+  chname: "\u674E\u6770"
+  dialogue: {fileID: 11400000, guid: 524f24d2bb0f9924bac25ad40e5c163b, type: 2}
+  state: 1
   anim: {fileID: 0}
-  Button: {fileID: 0}
+  Button: {fileID: 123107116}
+--- !u!70 &1841245798
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841245794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.6344652, y: 11.093681}
+  m_Size: {x: 3.768931, y: 16.223106}
+  m_Direction: 0
 --- !u!1 &1849671901
 GameObject:
   m_ObjectHideFlags: 0
