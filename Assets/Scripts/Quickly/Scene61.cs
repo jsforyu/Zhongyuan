@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Scene61 : MonoBehaviour
 {
+    [SerializeField] private Scene62 scene62;
+
     [SerializeField] private DialogueData_So dialogueData_So;
 
     [SerializeField] private BagDataSO bag;
@@ -36,6 +38,9 @@ public class Scene61 : MonoBehaviour
         if (index >= dialogueData_So.DialogueList.Count)
         {
             xiansuo.SetActive(true);
+            scene62.enabled = true;
+            this.enabled = false;
+
         }
         else if (Input.GetMouseButton(0) && isok)
         {
@@ -56,7 +61,6 @@ public class Scene61 : MonoBehaviour
         showtime += Time.deltaTime;
         if (showtime >= 2)
         {
-            showtime = 0;
             isok = true;
         }
     }

@@ -20,7 +20,7 @@ public class Scene62 : MonoBehaviour
     [SerializeField] private Scene63 scene63;
 
     private AudioSource audioSource;
-    private int index = 0;
+    private int index = -1;
 
     private bool isok = false;
 
@@ -30,23 +30,21 @@ public class Scene62 : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        npcName.text = dialogueData_So.DialogueList[index].npcName;
-        dialogue.text = dialogueData_So.DialogueList[index].dialoguetext;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && isok)
+        if (Input.GetMouseButton(0) && isok&&!BagController.Instance.isstop && !EventSystem.current.IsPointerOverGameObject())
         {
             index++;
             isok = false;
             showtime = 0;
-            if (index >= dialogueData_So.DialogueList.Count&& !EventSystem.current.IsPointerOverGameObject())
+            if (index >= dialogueData_So.DialogueList.Count)
             {
                     xuanxiang.SetActive(true);
             }
-            else
+            else 
             {
                 dialogue.text = "";
                 npcName.text = dialogueData_So.DialogueList[index].npcName;
@@ -56,12 +54,12 @@ public class Scene62 : MonoBehaviour
         showtime += Time.deltaTime;
         if (showtime >= 2)
         {
-            showtime = 0;
             isok = true;
         }
     }
     public void Answer1()
     {
+        dialogue.text = "";
         npcName.text = "迎儿";
         dialogue.DOText("“王兴哥哥，这时候就莫要开玩笑了。”", 1f);
     }
@@ -76,6 +74,7 @@ public class Scene62 : MonoBehaviour
 
     public void Answer3()
     {
+        dialogue.text = "";
         npcName.text = "李杰";
         dialogue.DOText("“哎哎哎？小兄弟你可别吓我！咱们不是站在一边的吗？这玩笑可不能随便开！”", 1f);
     }
