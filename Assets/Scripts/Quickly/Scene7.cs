@@ -9,14 +9,15 @@ public class Scene7 : MonoBehaviour
 {
     [SerializeField] private DialogueData_So dialogueData_So;
 
-
     [SerializeField] private Text npcName;
 
     [SerializeField] private Text dialogue;
 
     [SerializeField] private GameObject end;
 
-    [SerializeField] private GameObject cg;
+    [SerializeField] private GameObject cg1;
+
+    [SerializeField] private GameObject cg2;
 
     private AudioSource audioSource;
 
@@ -26,7 +27,6 @@ public class Scene7 : MonoBehaviour
 
     private float showtime;
 
-    private float temptime = 0;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -37,18 +37,14 @@ public class Scene7 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        temptime += Time.deltaTime;
-        if (temptime > 40f)
-        {
-            cg.SetActive(true);
-        
-        }
 
         if (Input.GetMouseButton(0) && isok  && !EventSystem.current.IsPointerOverGameObject())
         {
             index++;
             isok = false;
             showtime = 0;
+            if(index==14) { cg1.SetActive(true); }
+            if(index==30) { cg2.SetActive(true); audioSource.Play(); }
             if (index >= dialogueData_So.DialogueList.Count)
             {
                 end.SetActive(true);
