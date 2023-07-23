@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class Scene63 : Singleton<Scene63>
 {
     [SerializeField] private DialogueData_So dialogueData_So;
@@ -21,7 +21,7 @@ public class Scene63 : Singleton<Scene63>
 
     [SerializeField] private GameObject dialogueUI;
 
-    public bool isstop = false;
+    [SerializeField] private GameObject cg;
 
     private AudioSource audioSource;
 
@@ -40,21 +40,26 @@ public class Scene63 : Singleton<Scene63>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && isok&&!isstop)
+        if (Input.GetMouseButton(0) && isok&&!BagController.Instance.isstop && !EventSystem.current.IsPointerOverGameObject())
         {
             index++;
             isok = false;
             showtime = 0;
-            if (index >= dialogueData_So.DialogueList.Count && !EventSystem.current.IsPointerOverGameObject())
+            if (index >= dialogueData_So.DialogueList.Count )
             {
-
+                int index = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(index + 1);
             }
-            if(index==3||index==8 || index == 20||index==30)
+            if(index==43)
             {
-                isstop = true;
+                cg.SetActive(true);
+            }
+            if(index==3||index==16 || index == 20||index==30)
+            {
+                BagController.Instance.isstop = true;
                 evidenceUI.SetActive(true);
             }
-            else if(index==16)
+            else if(index==8)
             {
                 dialogueUI.SetActive(true);
             }          
@@ -69,7 +74,6 @@ public class Scene63 : Singleton<Scene63>
         if (showtime >= 2)
         {
             dialogueUI.SetActive(false);
-            showtime = 0;
             isok = true;
         }
     }

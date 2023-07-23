@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BagController : Singleton<BagController>
 {
-    public Scene63 scene63;
+    public bool isstop = false;
 
     [SerializeField] public BagDataSO bagData;
 
@@ -189,12 +189,11 @@ public class BagController : Singleton<BagController>
             {
                 if (itemDataLists[i]==currentData)
                 {
-                    itemDataLists[i] = null;
                     itemSprite.color=new Color(1,1,1,0);
                     itemDes.text = "";
                     itemIndex++;
-                    Scene63.Instance.isstop = false;
-                    gameObject.SetActive(false);
+                    isstop = false;
+                    transform.GetChild(0).gameObject.SetActive(false);
                 }
             }
         }
