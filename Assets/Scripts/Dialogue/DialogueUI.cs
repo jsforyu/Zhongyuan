@@ -180,6 +180,10 @@ public class DialogueUI : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Scene1" && currentcharacter.GetComponent<Character>().ID == 1)
             {
                 Scene1.Instance.StartZi();//¿ªÊ¼²Â×ÖÃÕ
+                currentcharacter.GetComponent<Character>().dialogueindex++;
+                textfinshed = false;
+                dialogueui.gameObject.SetActive(false);
+                Player.instance.state = 0;
             }
             if (SceneManager.GetActiveScene().name == "Scene1" && currentcharacter.GetComponent<Character>().ID == 4)
             {
