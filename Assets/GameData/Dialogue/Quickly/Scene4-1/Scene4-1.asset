@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
   m_Name: Scene4-1
   m_EditorClassIdentifier: 
-  DialogueList: []
+  DialogueList:
+  - {fileID: 11400000, guid: 375dc2aa17e58f443bd4b9a04be8e14c, type: 2}
+  - {fileID: 11400000, guid: 4feb6fa2c09bbb84ebdd1bc3140714b9, type: 2}
+  - {fileID: 11400000, guid: 1eab43168740d4048b8460a41a95f199, type: 2}
+  - {fileID: 11400000, guid: fa846d6b64396484b8fd1bfd8d2a7509, type: 2}
+  - {fileID: 11400000, guid: 8345fba33fe598f45826c0e165d7631f, type: 2}
+  - {fileID: 11400000, guid: c49c3d8db5d257c41a2fc36e085dc353, type: 2}
+  - {fileID: 11400000, guid: 3877dde6ffe9fe64da042793e79ce052, type: 2}
+  - {fileID: 11400000, guid: 7be1adf1000d92b4896eb23750cb7005, type: 2}
+  - {fileID: 11400000, guid: 5841006a9018392419ba44e9639eba95, type: 2}
+  - {fileID: 11400000, guid: 49c160827d3eab74aa8c5a55a5107c7d, type: 2}
+  - {fileID: 11400000, guid: 02b061a29aa5fcc4280a5194a25ab6a0, type: 2}
   currentindex: 0
   Changeindex: 

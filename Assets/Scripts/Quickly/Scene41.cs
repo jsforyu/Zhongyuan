@@ -16,7 +16,7 @@ public class Scene41 : MonoBehaviour
     [SerializeField] private Text dialogue;
 
     private AudioSource audioSource;
-    private int index = -1;
+    private int index = 0;
 
     private bool isok = false;
 
@@ -26,6 +26,8 @@ public class Scene41 : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        npcName.text = dialogueData_So.DialogueList[index].npcName;
+        dialogue.DOText(dialogueData_So.DialogueList[index].dialoguetext, 1f);
     }
 
     // Update is called once per frame
