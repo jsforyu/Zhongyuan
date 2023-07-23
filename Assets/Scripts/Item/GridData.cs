@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GridData : BaseUI
 {
     public ItemDataSO itemData;
 
+    private void Start()
+    {
+    }
     private void Update()
     {
         if(isSelect)
@@ -21,7 +25,8 @@ public class GridData : BaseUI
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                if(itemData != null)
+                int index = SceneManager.GetActiveScene().buildIndex;
+                if (itemData != null&&index>=6)
                 {
                     transform.GetChild(0).gameObject.SetActive(false);
                     BagController.Instance.BagItemCom(itemData);
