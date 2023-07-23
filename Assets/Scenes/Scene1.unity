@@ -4151,7 +4151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386531686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -980.6, y: -540.1, z: 0}
+  m_LocalPosition: {x: -949.6, y: -540.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4196,8 +4196,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1587064013
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1a21c7c0f4f34db4296de00b2ec9e657, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5437,7 +5437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1760239264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5918,8 +5918,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1930945558}
-  - component: {fileID: 1930945560}
   - component: {fileID: 1930945559}
+  - component: {fileID: 1930945560}
   m_Layer: 5
   m_Name: "\u5212\u7EBF"
   m_TagString: Untagged
@@ -6055,18 +6055,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1930945557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56c207e9f82a2341aa69fc0353b3801, type: 3}
+  m_Script: {fileID: 11500000, guid: 72c87c7ba468b7348850a7b1112482d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   right: {fileID: 981313471}
   answerShow: {fileID: 2061803456}
   zimis:
-  - "\u5143\u5BB5"
-  - "\u6842\u82B1"
+  - "\u4ECA\u5915\u77E5\u4F55\u5915\uFF0C\u56E2\u5706\u4E8B\u4E8B\u540C\u3002\u6C64\u5B98\u5BFB\u65E7\u5473\uFF0C\u7076\u5A62\u8BE7\u65B0\u529F\u3002\u661F\u707F\u4E4C\u4E91\u91CC\uFF0C\u73E0\u6D6E\u6D4A\u6C34\u4E2D\u3002\u5C81\u65F6\u7F16\u6742\u548F\uFF0C\u9644\u6B64\u8BF4\u5BB6\u98CE\u3002"
+  - "\u6697\u6DE1\u8F7B\u9EC4\u4F53\u6027\u67D4,\u60C5\u758F\u8FF9\u8FDC\u53EA\u9999\u7559\u3002\u4F55\u987B\u6D45\u78A7\u6DF1\u7EA2\u8272,\u81EA\u662F\u82B1\u4E2D\u7B2C\u4E00\u6D41\u3002\u6885\u5B9A\u5992,\u83CA\u5E94\u7F9E,\u753B\u9611\u5F00\u5904\u51A0\u4E2D\u79CB\u3002\u9A9A\u4EBA\u53EF\u715E\u65E0\u60C5\u601D,\u4F55\u4E8B\u5F53\u5E74\u4E0D\u89C1\u6536\u3002"
   mingwus:
   - {fileID: 642826393}
   - {fileID: 125388146}
-  textComponent: {fileID: 2061803456}
+  textComponent: {fileID: 981313471}
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   l:
   - {fileID: 897415456}

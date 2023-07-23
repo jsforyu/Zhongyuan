@@ -245,8 +245,8 @@ MonoBehaviour:
   npcName: {fileID: 1685485870}
   dialogue: {fileID: 1696704163}
   end: {fileID: 2090654563}
-  cg1: {fileID: 0}
-  cg2: {fileID: 0}
+  cg1: {fileID: 72250559}
+  cg2: {fileID: 2005361245}
 --- !u!82 &49025448
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1539,7 +1539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1379052453
 RectTransform:
   m_ObjectHideFlags: 0
