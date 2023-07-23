@@ -6055,9 +6055,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1930945557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c87c7ba468b7348850a7b1112482d7, type: 3}
+  m_Script: {fileID: 11500000, guid: c56c207e9f82a2341aa69fc0353b3801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  right: {fileID: 981313471}
+  answerShow: {fileID: 2061803456}
+  zimis:
+  - "\u5143\u5BB5"
+  - "\u6842\u82B1"
+  mingwus:
+  - {fileID: 642826393}
+  - {fileID: 125388146}
+  textComponent: {fileID: 2061803456}
+  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  l:
+  - {fileID: 897415456}
+  - {fileID: 2071473864}
+  - {fileID: 1773535921}
+  d:
+  - {fileID: 2038637861}
+  - {fileID: 87630185}
+  - {fileID: 767189179}
 --- !u!1 &1966734269
 GameObject:
   m_ObjectHideFlags: 0
