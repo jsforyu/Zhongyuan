@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 261687394}
   - component: {fileID: 261687393}
   - component: {fileID: 261687392}
+  - component: {fileID: 261687396}
   m_Layer: 5
   m_Name: Canvas2
   m_TagString: Untagged
@@ -994,6 +995,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &261687396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261687391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9356c6d4755f95f4399433cf2c350008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Texts:
+  - {fileID: 996397942}
+  - {fileID: 195724766}
+  - {fileID: 1157007719}
 --- !u!1 &287092325
 GameObject:
   m_ObjectHideFlags: 0
@@ -5306,6 +5323,7 @@ MonoBehaviour:
   Panel: {fileID: 261687391}
   panel: {fileID: 1609092275}
   Zimi: {fileID: 1760239263}
+  ChangePanel: {fileID: 261687391}
 --- !u!1 &1609092275
 GameObject:
   m_ObjectHideFlags: 0
