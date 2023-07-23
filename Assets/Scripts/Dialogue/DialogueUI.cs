@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Animations;
-
+using UnityEngine.SceneManagement;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -66,10 +66,16 @@ public class DialogueUI : MonoBehaviour
     }
 
 
-    public void ShowDialogueUI()
+    public void ShowDialogueUI() //player专用
     {
         currentcharacter = CharacterManager.instance.Characters[0];
-        Name.text = Player.instance.chname;
+        dialogueui.gameObject.SetActive(true);
+        textfinshed = true;
+        StartCoroutine(ShowDialogue());
+    }
+    public void ShowDialogueNPC(int npcid)
+    {
+        currentcharacter = CharacterManager.instance.Characters[npcid];
         dialogueui.gameObject.SetActive(true);
         textfinshed = true;
         StartCoroutine(ShowDialogue());
@@ -79,6 +85,7 @@ public class DialogueUI : MonoBehaviour
     {
         Content.text = "";
         Content.color = Color.black;//还原到原来的颜色
+        Name.color = Color.black;
         textfinshed = false;
         index = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex;
         Name.text = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].npcName;
@@ -94,6 +101,7 @@ public class DialogueUI : MonoBehaviour
     IEnumerator ShowDialogueButton()//高亮后出现按钮
     {
         Content.text = "";
+        Name.color = Color.black;
         textfinshed = false;
         int clewindex=0;
         index = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex;
@@ -121,7 +129,7 @@ public class DialogueUI : MonoBehaviour
     {
         Content.text = "";
         textfinshed = false;
-
+        Name.color = Color.black;
         Name.text = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].npcName; index = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex;
         if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].evidence != "")
         { evidences.npcName.Add(currentcharacter.GetComponent<Character>().chname);
@@ -168,6 +176,11 @@ public class DialogueUI : MonoBehaviour
     {
         if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex >= currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList.Count)
         {
+
+            if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 1)
+            {
+                Scene1.Instance.StartZi();
+            }
             currentcharacter.GetComponent<Character>().dialogueindex++;
             textfinshed = false;
             dialogueui.gameObject.SetActive(false);
@@ -183,5 +196,6 @@ public class DialogueUI : MonoBehaviour
         }
         else StartCoroutine(ShowDialogue());
     }
+
 }
 

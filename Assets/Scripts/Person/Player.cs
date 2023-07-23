@@ -143,13 +143,14 @@ public class Player : Character
         if (collision.gameObject.GetComponent<Character>() != null)
         {
             id = collision.gameObject.GetComponent<Character>().ID;
-            if ((collision.gameObject.GetComponent<Character>().dialogueindex>= collision.gameObject.GetComponent<Character>().dialogue.Count) ||(collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].currentindex >=
-                collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].DialogueList.Count))
-                if(collision.gameObject.GetComponent<Character>().dialogue[dialogueindex]==null)
+            int currentdialougueindex = collision.gameObject.GetComponent<Character>().dialogueindex;
+            if ((collision.gameObject.GetComponent<Character>().dialogueindex>= collision.gameObject.GetComponent<Character>().dialogue.Count) ||(collision.gameObject.GetComponent<Character>().dialogue[currentdialougueindex].currentindex >=
+                collision.gameObject.GetComponent<Character>().dialogue[currentdialougueindex].DialogueList.Count))
+                if(collision.gameObject.GetComponent<Character>().dialogue[currentdialougueindex] ==null)
                 return;
             Debug.Log(id);
             Debug.Log("撞上了");
-            if (collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].currentindex < collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].DialogueList.Count)
+            if (collision.gameObject.GetComponent<Character>().dialogue[currentdialougueindex].currentindex < collision.gameObject.GetComponent<Character>().dialogue[currentdialougueindex].DialogueList.Count)
             {
                 Debug.Log("准备对话");
                 Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);

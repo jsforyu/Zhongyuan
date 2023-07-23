@@ -1080,12 +1080,12 @@ GameObject:
   - component: {fileID: 488451358}
   - component: {fileID: 488451357}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Zimi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &488451357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1788,10 +1788,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   chname: "\u738B\u5174"
-  dialogue: {fileID: 11400000, guid: 453c35577057aa845bb9665b4bf01a67, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: 453c35577057aa845bb9665b4bf01a67, type: 2}
   state: 0
   anim: {fileID: 661930499}
   Button: {fileID: 0}
+  dialogueindex: 0
   speed: 2
   id: 0
   Speed: 2
@@ -2353,10 +2355,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   chname: "\u6768\u6C0F"
-  dialogue: {fileID: 11400000, guid: 091d638561a515e48bfd7c217bb6650a, type: 2}
-  state: 0
+  dialogue:
+  - {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
+  state: 1
   anim: {fileID: 1144963395}
-  Button: {fileID: 0}
+  Button: {fileID: 123107116}
+  dialogueindex: 0
 --- !u!95 &1144963395
 Animator:
   serializedVersion: 4
@@ -3045,6 +3049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1533946629}
   - component: {fileID: 1533946628}
+  - component: {fileID: 1533946630}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3085,6 +3090,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533946630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533946627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9e5aff807946143aa13cdb0c50521a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 261687391}
+  Zimi: {fileID: 488451356}
 --- !u!1 &1609092275
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,10 +3416,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   chname: "\u5B59\u6587"
-  dialogue: {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
-  state: 1
+  dialogue:
+  - {fileID: 11400000, guid: 4ab0ac36cdc426748a4db98d63922169, type: 2}
+  - {fileID: 11400000, guid: 205b5024fca95c542858058816262002, type: 2}
+  state: 0
   anim: {fileID: 1621238363}
   Button: {fileID: 123107116}
+  dialogueindex: 0
 --- !u!70 &1621238366
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3719,10 +3741,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   chname: "\u674E\u6770"
-  dialogue: {fileID: 11400000, guid: 524f24d2bb0f9924bac25ad40e5c163b, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: 524f24d2bb0f9924bac25ad40e5c163b, type: 2}
+  - {fileID: 11400000, guid: 2665a11f6cb998f45b9f754e0fe2ee89, type: 2}
   state: 1
   anim: {fileID: 0}
   Button: {fileID: 123107116}
+  dialogueindex: 0
 --- !u!70 &1841245798
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

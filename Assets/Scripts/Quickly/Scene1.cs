@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Scene1 : Singleton<Scene1>
 {
     public GameObject Panel;
+    public GameObject Zimi;
     void Start()
     {
         
@@ -51,7 +53,13 @@ public class Scene1 : Singleton<Scene1>
     {
         Panel.SetActive(true);
         GameObject panel = Panel.transform.GetChild(0).gameObject;
-        panel.GetComponent<Image>().CrossFadeAlpha(0, 2f, false);
-        //自动弹出对NPC的对话
+        
+        //panel.GetComponent<Image>().CrossFadeAlpha(0, 2f, false);
+        //使用动画自动弹出对NPC的对话
+    }
+
+     public void StartZi()
+    {
+        Zimi.SetActive(true);
     }
 }
