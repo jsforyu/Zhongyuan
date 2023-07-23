@@ -179,7 +179,26 @@ public class DialogueUI : MonoBehaviour
 
             if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 1)
             {
-                Scene1.Instance.StartZi();
+                Scene1.Instance.StartZi();//开始猜字谜
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 4)
+            {
+                Scene1.Instance.Leave();//迎儿离开
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 2&& currentcharacter.GetComponent<Character>().dialogueindex==0)
+            {
+                Scene1.Instance.SunMove();//孙文离开，李杰可以对话
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 3&&currentcharacter.GetComponent<Character>().dialogueindex == 1)
+            {
+                Scene1.Instance.ChageScene();//李杰第二次对话后黑屏增加NPC，
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 5) { 
+                CharacterManager.instance.Characters[2].GetComponent<Character>().state=1;//绿衣男对话后孙文可以对话
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2 && currentcharacter.GetComponent<Character>().ID == 2 && currentcharacter.GetComponent<Character>().dialogueindex == 1)
+            {
+                //对话完毕，转场
             }
             currentcharacter.GetComponent<Character>().dialogueindex++;
             textfinshed = false;
