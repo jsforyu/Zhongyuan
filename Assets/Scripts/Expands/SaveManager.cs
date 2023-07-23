@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class SaveManager : Singleton<SaveManager>
 {
+    public BagController bag;
+    public EvidenceData evidence;
 
+
+    private void Update()
+    {
+        Save(bag,bag.name);
+        Save(evidence,evidence.name);
+    }
     public void Save(Object data,string key)
     {
         var jsonData=JsonUtility.ToJson(data,true);

@@ -49,7 +49,7 @@ public class BagController : Singleton<BagController>
     }
     private void Update()
     {
-        SaveManager.Instance.Save(bagData, "bag");
+        //SaveManager.Instance.Save(bagData, "bag");
 
 
 

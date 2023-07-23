@@ -2179,6 +2179,7 @@ MonoBehaviour:
   itemDes: {fileID: 645051416}
   itemCompositings:
   - {fileID: 11400000, guid: 64ea52917c1679b48bd9eb505ee48afa, type: 2}
+  - {fileID: 11400000, guid: 030870a989e3ce344adfdc7fd7274141, type: 2}
   itemComSprite_01: {fileID: 471868778}
   itemComSprite_02: {fileID: 481097849}
   itemDatas:
@@ -3819,10 +3820,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   chname: "\u6768\u6C0F"
-  dialogue: {fileID: 11400000, guid: 091d638561a515e48bfd7c217bb6650a, type: 2}
+  dialogue:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   state: 0
   anim: {fileID: 1148667019}
   Button: {fileID: 0}
+  dialogueindex: 0
 --- !u!95 &1148667019
 Animator:
   serializedVersion: 4
@@ -6879,10 +6884,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   chname: "\u738B\u5174"
-  dialogue: {fileID: 0}
+  dialogue:
+  - {fileID: 0}
   state: 0
   anim: {fileID: 2041317689}
   Button: {fileID: 0}
+  dialogueindex: 0
   speed: 80
   id: 0
   Speed: 2
