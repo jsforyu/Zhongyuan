@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scene1 : Singleton<Scene1>
 {
-    // Start is called before the first frame update
+    public GameObject Panel;
     void Start()
     {
         
@@ -20,5 +21,37 @@ public class Scene1 : Singleton<Scene1>
     public void SwitchState()
     {
 
+    }
+
+    public void Leave()//杨氏，迎儿离开
+    {
+        Vector3 currentpos1 = CharacterManager.instance.Characters[1].transform.position;
+        Vector3 currentpos2 = CharacterManager.instance.Characters[4].transform.position;
+        Vector3 targetpos = new Vector3(-32, currentpos1.y, 0);
+        Vector3 targetpos1 = new Vector3(-32, currentpos2.y, 0);
+        CharacterManager.instance.Characters[1].transform.position = Vector3.MoveTowards(currentpos1, targetpos, Player.instance.speed * Time.deltaTime);
+        CharacterManager.instance.Characters[1].transform.position= Vector3.MoveTowards(currentpos2, targetpos1, Player.instance.speed * Time.deltaTime);
+        CharacterManager.instance.Characters[2].GetComponent<Character>().state = 1;//离开后孙文可对话
+    }
+
+    public void SunMove()//孙文移动
+    {
+        Vector3 targetpos = CharacterManager.instance.Characters[3].transform.position;//李杰的位置
+        Vector3 currentpos= CharacterManager.instance.Characters[2].transform.position;//孙文的位置
+        CharacterManager.instance.Characters[2].transform.position= Vector3.MoveTowards(currentpos, targetpos, Player.instance.speed * Time.deltaTime);
+        CharacterManager.instance.Characters[3].GetComponent<Character>().state = 1;//李杰可以对话
+    }
+
+    public void Move()
+    {
+        
+    }
+
+    public void ChageScene()//屏幕淡入淡出
+    {
+        Panel.SetActive(true);
+        GameObject panel = Panel.transform.GetChild(0).gameObject;
+        panel.GetComponent<Image>().CrossFadeAlpha(0, 2f, false);
+        //自动弹出对NPC的对话
     }
 }
