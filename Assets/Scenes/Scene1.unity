@@ -2370,9 +2370,7 @@ MonoBehaviour:
   ID: 0
   chname: "\u738B\u5174"
   dialogue:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 453c35577057aa845bb9665b4bf01a67, type: 2}
   state: 0
   anim: {fileID: 661930499}
   Button: {fileID: 0}
@@ -3978,10 +3976,8 @@ MonoBehaviour:
   ID: 1
   chname: "\u6768\u6C0F"
   dialogue:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  state: 0
+  - {fileID: 11400000, guid: 510bdcb6ae5f62b4c91317060b73cfa3, type: 2}
+  state: 1
   anim: {fileID: 1144963395}
   Button: {fileID: 0}
   dialogueindex: 0
@@ -4931,7 +4927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 261687391}
-  Zimi: {fileID: 488451356}
+  Zimi: {fileID: 1760239263}
 --- !u!1 &1609092275
 GameObject:
   m_ObjectHideFlags: 0
@@ -5245,9 +5241,8 @@ MonoBehaviour:
   ID: 2
   chname: "\u5B59\u6587"
   dialogue:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4ab0ac36cdc426748a4db98d63922169, type: 2}
+  - {fileID: 11400000, guid: 205b5024fca95c542858058816262002, type: 2}
   state: 1
   anim: {fileID: 1621238363}
   Button: {fileID: 123107116}
@@ -5759,9 +5754,8 @@ MonoBehaviour:
   ID: 3
   chname: "\u674E\u6770"
   dialogue:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 524f24d2bb0f9924bac25ad40e5c163b, type: 2}
+  - {fileID: 11400000, guid: 2665a11f6cb998f45b9f754e0fe2ee89, type: 2}
   state: 1
   anim: {fileID: 0}
   Button: {fileID: 123107116}
@@ -6051,7 +6045,7 @@ MonoBehaviour:
   - {fileID: 642826393}
   - {fileID: 125388146}
   textComponent: {fileID: 981313471}
-  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
   l:
   - {fileID: 897415456}
   - {fileID: 2071473864}

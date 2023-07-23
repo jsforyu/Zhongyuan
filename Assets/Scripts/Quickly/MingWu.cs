@@ -25,7 +25,7 @@ public class MingWu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (isSelect && Input.GetMouseButtonDown(0))
         {
-            Zimi.Instance.AddAnswer(current);
+            //Zimi.Instance.AddAnswer(current);
         }
     }
 }
