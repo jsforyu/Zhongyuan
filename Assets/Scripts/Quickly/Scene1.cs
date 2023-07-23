@@ -9,6 +9,7 @@ public class Scene1 : Singleton<Scene1>
     public GameObject Panel;
     public GameObject panel;
     public GameObject Zimi;
+    public GameObject ChangePanel;
     void Start()
     {
         
