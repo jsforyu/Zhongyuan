@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Scene4 : MonoBehaviour
+public class Scene41 : MonoBehaviour
 {
     [SerializeField] private DialogueData_So dialogueData_So;
 
@@ -14,8 +14,6 @@ public class Scene4 : MonoBehaviour
     [SerializeField] private Text npcName;
 
     [SerializeField] private Text dialogue;
-
-    [SerializeField] private GameObject YINGER;
 
     private AudioSource audioSource;
     private int index = -1;
@@ -38,8 +36,6 @@ public class Scene4 : MonoBehaviour
             index++;
             isok = false;
             showtime = 0;
-            if (index ==8) { YINGER.SetActive(false); }
-            if (index ==10) { audioSource.Play(); }
             if (index >= dialogueData_So.DialogueList.Count)
             {
                 int temp = SceneManager.GetActiveScene().buildIndex;
