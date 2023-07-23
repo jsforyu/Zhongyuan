@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
   m_Name: Scene4
   m_EditorClassIdentifier: 
-  DialogueList: []
+  DialogueList:
+  - {fileID: 11400000, guid: c7be87c6ed9e6a04983bc2573109b27a, type: 2}
+  - {fileID: 11400000, guid: 93149c21d77a03c4a89835fed8f5e369, type: 2}
+  - {fileID: 11400000, guid: 5cad176175051734d970a2bbcec4eeae, type: 2}
+  - {fileID: 11400000, guid: 35f3714c48d5d5d4eb05d79f9986af4d, type: 2}
+  - {fileID: 11400000, guid: c2caecd9574b116488d2ca35e7f9dd17, type: 2}
+  - {fileID: 11400000, guid: 404045a8dc908dc49abf314125015566, type: 2}
+  - {fileID: 11400000, guid: 79e6786a5223f2e4f91a34fb038ccbcf, type: 2}
+  - {fileID: 11400000, guid: 903727dd164ec2f4eb28ea8f03893a6a, type: 2}
+  - {fileID: 11400000, guid: da1cc9d898ac8cb42aae8f33746db4e2, type: 2}
+  - {fileID: 11400000, guid: f15466235f9f68348863467892c642c5, type: 2}
+  - {fileID: 11400000, guid: 83691b73ce4af5948bf364beb592b479, type: 2}
+  - {fileID: 11400000, guid: a68bac37703dd5e41be3d38af54fec23, type: 2}
   currentindex: 0
   Changeindex: 
