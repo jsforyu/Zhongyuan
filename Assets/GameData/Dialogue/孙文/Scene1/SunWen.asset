@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0168050a926d4695a7d741843f547, type: 3}
+  m_Name: SunWen
+  m_EditorClassIdentifier: 
+  DialogueList:
+  - {fileID: 11400000, guid: 542394c24e61f564194dfe1297dbf8ca, type: 2}
+  - {fileID: 11400000, guid: d12431ea6b7a74f40b290f40f89f5eca, type: 2}
+  - {fileID: 11400000, guid: 042272811e18ea1499a011f54ff5712d, type: 2}
+  - {fileID: 11400000, guid: 13ac76abbcc58f34bacf93fc615583a5, type: 2}
+  - {fileID: 11400000, guid: d19fd5159325c85468eaa03f4f18698c, type: 2}
+  - {fileID: 11400000, guid: ff2d05552d8e20b40918e7b4574ca8dd, type: 2}
+  - {fileID: 11400000, guid: 7b4cff6f5d0a2e744af78f0de658e47d, type: 2}
+  - {fileID: 11400000, guid: cfc738544d91a5245a2bf8452b53a3da, type: 2}
+  - {fileID: 11400000, guid: 759ec3b1d54ca3d479e729c28408bd7e, type: 2}
+  - {fileID: 11400000, guid: b3807a077cd1c754db491856b44b94bb, type: 2}
+  currentindex: 0
+  Changeindex: 

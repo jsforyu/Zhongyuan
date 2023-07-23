@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
     public static Player instance;
     public float speed;
-
     private Vector3 target;
 
     Rigidbody2D ri;
@@ -31,6 +30,7 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
+        //BagController.Instance.bagData.sceneid = SceneManager.GetActiveScene().buildIndex;
         /*
         if (Vector3.Distance(transform.position, mouseposition) < 0.01f)
         {
@@ -143,18 +143,23 @@ public class Player : Character
         if (collision.gameObject.GetComponent<Character>() != null)
         {
             id = collision.gameObject.GetComponent<Character>().ID;
-            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex >=
-                collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+            if ((collision.gameObject.GetComponent<Character>().dialogueindex>= collision.gameObject.GetComponent<Character>().dialogue.Count) ||(collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].currentindex >=
+                collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].DialogueList.Count))
+                if(collision.gameObject.GetComponent<Character>().dialogue[dialogueindex]==null)
                 return;
             Debug.Log(id);
             Debug.Log("撞上了");
-            if (collision.gameObject.GetComponent<Character>().dialogue.currentindex < collision.gameObject.GetComponent<Character>().dialogue.DialogueList.Count)
+            if (collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].currentindex < collision.gameObject.GetComponent<Character>().dialogue[dialogueindex].DialogueList.Count)
             {
                 Debug.Log("准备对话");
                 Vector3 targetposition = new Vector3(collision.gameObject.transform.position.x - 2, collision.gameObject.transform.position.y + 8, 0);
                 if (collision.gameObject.GetComponent<Character>().Button == null) return;
                 if (collision.gameObject.GetComponent<Character>().state == 1)//可对话状态
                 {
+                    if (collision.gameObject.GetComponent<Character>().chname == "李杰")
+                    {
+                        collision.gameObject.GetComponent<Character>().state = 0;
+                    }
                     collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
                     collision.gameObject.GetComponent<Character>().Button.SetActive(true);
                 }

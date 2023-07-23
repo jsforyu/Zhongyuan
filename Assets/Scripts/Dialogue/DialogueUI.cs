@@ -38,7 +38,7 @@ public class DialogueUI : MonoBehaviour
 
     private void Update()
     {
-
+        //SaveManager.Instance.Save(evidences,"evidences");//存储证言
         //三种显示效果，追击询问，自动获得，普通效果
         //每句对话有个状态，分别对应三种显示效果，
         if (Input.GetMouseButtonDown(0) && Player.instance.state == 1&&textfinshed)
@@ -47,7 +47,7 @@ public class DialogueUI : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0) && Player.instance.state == 1 && !textfinshed)//整个流程没完全结束
         {
-            if (highstate && currentcharacter.GetComponent<Character>().dialogue.DialogueList[currentcharacter.GetComponent<Character>().dialogue.currentindex - 1].state == 2)//文字消失+自动显示下一行
+            if (highstate && currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex - 1].state == 2)//文字消失+自动显示下一行
             {
                 fadeText.SetTrigger("Fade");
             }
@@ -55,7 +55,6 @@ public class DialogueUI : MonoBehaviour
     }
     public void PreDialogue()
     {
-        Player.instance.transform.position = Player.instance.transform.position;
         Player.instance.state = 1;
         Debug.Log(Player.instance.id);
         currentcharacter = CharacterManager.instance.Characters[Player.instance.id];
@@ -81,69 +80,69 @@ public class DialogueUI : MonoBehaviour
         Content.text = "";
         Content.color = Color.black;//还原到原来的颜色
         textfinshed = false;
-        index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
-        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
-        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
+        index = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex;
+        Name.text = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].npcName;
+        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext.Length; i++)
         {
-            Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
+            Content.text +=currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
-        currentcharacter.GetComponent<Character>().dialogue.currentindex++;
+        currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex++;
         textfinshed = true;
     }
 
     IEnumerator ShowDialogueButton()//高亮后出现按钮
     {
         Content.text = "";
-        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         textfinshed = false;
         int clewindex=0;
-        index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
+        index = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex;
+        Name.text = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].npcName;
         Debug.Log(index);
-        if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem !=null)
-            BagController.Instance.BagAddItem(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clewitem);
-        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
+        if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].clewitem !=null)
+            BagController.Instance.BagAddItem(currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].clewitem);
+        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext.Length; i++)
         {
-            if ((clewindex< currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew.Length) &&   
-                (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
-                currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].clew[clewindex]))
+            if ((clewindex< currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].clew.Length) &&   
+                (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i] ==
+                currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].clew[clewindex]))
             {
                 Content.text +=
-                      "<color=red>"+ currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] + "</color>";
+                      "<color=red>"+ currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i] + "</color>";
                 clewindex++;
             }
-            else Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
+            else Content.text +=currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
         QuestionButton.SetActive(true);
-        currentcharacter.GetComponent<Character>().dialogue.currentindex++;
+        currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex++;
     }
     IEnumerator ShowDialogueHigh()//高亮，上浮消失
     {
         Content.text = "";
-        Name.text = currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].npcName;
         textfinshed = false;
-        index = currentcharacter.GetComponent<Character>().dialogue.currentindex;
-        if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence != "")
+
+        Name.text = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].npcName; index = currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex;
+        if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].evidence != "")
         { evidences.npcName.Add(currentcharacter.GetComponent<Character>().chname);
-         evidences.evidence.Add(currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence);
+         evidences.evidence.Add(currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].evidence);
         }
         int evidenceindex = 0;
-        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext.Length; i++)
+        for (int i = 0; i < currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext.Length; i++)
         {
-            if ((evidenceindex < currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence.Length)
+            if ((evidenceindex < currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].evidence.Length)
                 &&
-                (currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] ==
-                currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].evidence[evidenceindex]))
+                (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i] ==
+                currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].evidence[evidenceindex]))
             {
                 Content.text +=
-                      "<color=red>" + currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i] + "</color>";
+                      "<color=red>" + currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i] + "</color>";
                 evidenceindex++;
             }
-            else Content.text +=currentcharacter.GetComponent<Character>().dialogue.DialogueList[index].dialoguetext[i];
+            else Content.text +=currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[index].dialoguetext[i];
             yield return new WaitForSeconds(textspeed);
         }
-        currentcharacter.GetComponent<Character>().dialogue.currentindex++;
+        currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex++;
         highstate = true;
     }
     public void QuestionNext()
@@ -167,17 +166,18 @@ public class DialogueUI : MonoBehaviour
 
     void SwitchDialogue()
     {
-        if (currentcharacter.GetComponent<Character>().dialogue.currentindex >= currentcharacter.GetComponent<Character>().dialogue.DialogueList.Count)
+        if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex >= currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList.Count)
         {
+            currentcharacter.GetComponent<Character>().dialogueindex++;
             textfinshed = false;
             dialogueui.gameObject.SetActive(false);
             Player.instance.state = 0;
         }
-        else if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[currentcharacter.GetComponent<Character>().dialogue.currentindex].state == 1)
+        else if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex].state == 1)
         {
             StartCoroutine(ShowDialogueButton());
         }
-        else if (currentcharacter.GetComponent<Character>().dialogue.DialogueList[currentcharacter.GetComponent<Character>().dialogue.currentindex].state == 2)
+        else if (currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].DialogueList[currentcharacter.GetComponent<Character>().dialogue[currentcharacter.GetComponent<Character>().dialogueindex].currentindex].state == 2)
         {
             StartCoroutine(ShowDialogueHigh());
         }
