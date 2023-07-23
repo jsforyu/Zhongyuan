@@ -756,7 +756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &770224328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2153,10 +2153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   chname: "\u738B\u5174"
-  dialogue: {fileID: 11400000, guid: ff740b72a218c1342accf503abf6e668, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: ff740b72a218c1342accf503abf6e668, type: 2}
   state: 1
   anim: {fileID: 1442780526}
   Button: {fileID: 0}
+  dialogueindex: 0
   speed: 80
   id: 0
   Speed: 2
