@@ -48,7 +48,7 @@ public class Scene7 : MonoBehaviour
             if (index >= dialogueData_So.DialogueList.Count)
             {
                 end.SetActive(true);
-                gameObject.SetActive(false);
+
 
             }
             else
