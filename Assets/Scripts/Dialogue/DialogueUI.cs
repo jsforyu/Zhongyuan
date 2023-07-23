@@ -185,6 +185,14 @@ public class DialogueUI : MonoBehaviour
                 dialogueui.gameObject.SetActive(false);
                 Player.instance.state = 0;
             }
+            if (SceneManager.GetActiveScene().name == "Scene1" && currentcharacter.GetComponent<Character>().ID == 3 && currentcharacter.GetComponent<Character>().dialogueindex == 0) 
+            {
+                currentcharacter.GetComponent<Character>().state = 0;//ÐÞ¸ÄÀî½Ü×´Ì¬
+            }
+            
+            {
+                Scene1.Instance.Leave();//Ó­¶ùÀë¿ª
+            }
             if (SceneManager.GetActiveScene().name == "Scene1" && currentcharacter.GetComponent<Character>().ID == 4)
             {
                 Scene1.Instance.Leave();//Ó­¶ùÀë¿ª

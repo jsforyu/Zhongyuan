@@ -38,7 +38,7 @@ public class Scene1 : Singleton<Scene1>
         Vector3 targetpos = new Vector3(-32, currentpos1.y, 0);
         Vector3 targetpos1 = new Vector3(-32, currentpos2.y, 0);
         CharacterManager.instance.Characters[1].transform.position = Vector3.MoveTowards(currentpos1, targetpos, Player.instance.speed * Time.deltaTime);
-        CharacterManager.instance.Characters[1].transform.position= Vector3.MoveTowards(currentpos2, targetpos1, Player.instance.speed * Time.deltaTime);
+        CharacterManager.instance.Characters[4].transform.position= Vector3.MoveTowards(currentpos2, targetpos1, Player.instance.speed * Time.deltaTime);
         CharacterManager.instance.Characters[2].GetComponent<Character>().state = 1;//离开后孙文可对话
     }
 

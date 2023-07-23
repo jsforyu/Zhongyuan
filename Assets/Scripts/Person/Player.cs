@@ -157,10 +157,6 @@ public class Player : Character
                 if (collision.gameObject.GetComponent<Character>().Button == null) return;
                 if (collision.gameObject.GetComponent<Character>().state == 1)//可对话状态
                 {
-                    if (collision.gameObject.GetComponent<Character>().chname == "李杰")
-                    {
-                        collision.gameObject.GetComponent<Character>().state = 0;
-                    }
                     collision.gameObject.GetComponent<Character>().Button.transform.position = targetposition;
                     collision.gameObject.GetComponent<Character>().Button.SetActive(true);
                 }
