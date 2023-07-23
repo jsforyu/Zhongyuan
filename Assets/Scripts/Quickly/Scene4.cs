@@ -39,8 +39,8 @@ public class Scene4 : MonoBehaviour
             index++;
             isok = false;
             showtime = 0;
-            if (index ==) { }
-            if (index ==) { }
+            //if (index ==) { }
+            //if (index ==) { }
             if (index >= dialogueData_So.DialogueList.Count)
             {
                 int temp = SceneManager.GetActiveScene().buildIndex;
