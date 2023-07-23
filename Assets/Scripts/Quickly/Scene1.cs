@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Scene1 : Singleton<Scene1>
 {
     public GameObject Panel;
+    public GameObject panel;
     public GameObject Zimi;
     void Start()
     {
@@ -16,7 +17,12 @@ public class Scene1 : Singleton<Scene1>
     // Update is called once per frame
     void Update()
     {
-        
+        if (panel.GetComponent<Image>().color.a <= 0)
+        {
+            Panel.SetActive(false);
+            CharacterManager.instance.Characters[5].SetActive(true);
+            DialogueUI.instance.ShowDialogueNPC(5);//出现绿衣男的对话
+        }
     }
 
 
@@ -52,9 +58,7 @@ public class Scene1 : Singleton<Scene1>
     public void ChageScene()//屏幕淡入淡出
     {
         Panel.SetActive(true);
-        GameObject panel = Panel.transform.GetChild(0).gameObject;
-        
-        //panel.GetComponent<Image>().CrossFadeAlpha(0, 2f, false);
+        panel.GetComponent<Image>().CrossFadeAlpha(0, 2f, false);
         //使用动画自动弹出对NPC的对话
     }
 
@@ -62,4 +66,9 @@ public class Scene1 : Singleton<Scene1>
     {
         Zimi.SetActive(true);
     }
+    public void StartLi()
+    {
+        DialogueUI.instance.ShowDialogueNPC(3);//出现李杰的对话
+    }
+
 }
