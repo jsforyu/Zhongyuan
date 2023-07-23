@@ -7,6 +7,10 @@ public class SaveManager : Singleton<SaveManager>
     public BagController bag;
     public EvidenceData evidence;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void Update()
     {

@@ -1041,10 +1041,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   chname: "\u6768\u6C0F"
-  dialogue: {fileID: 11400000, guid: 091d638561a515e48bfd7c217bb6650a, type: 2}
+  dialogue:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   state: 1
   anim: {fileID: 630911904}
   Button: {fileID: 792790750}
+  dialogueindex: 0
 --- !u!95 &630911904
 Animator:
   serializedVersion: 4
@@ -1699,17 +1703,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048645647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98ec044b8852ef14fa481cf1a06613f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
   chname: "\u738B\u5174"
-  dialogue: {fileID: 11400000, guid: 6ef1842b3929f284391483692eac79a0, type: 2}
+  dialogue:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   state: 0
   anim: {fileID: 1048645649}
   Button: {fileID: 0}
+  dialogueindex: 0
   speed: 5
   id: 0
   Speed: 2
@@ -2311,10 +2319,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   chname: "\u8FCE\u513F"
-  dialogue: {fileID: 0}
+  dialogue:
+  - {fileID: 0}
   state: 0
   anim: {fileID: 0}
   Button: {fileID: 792790750}
+  dialogueindex: 0
 --- !u!70 &1402772602
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2511,10 +2521,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   chname: "\u5B59\u4E00"
-  dialogue: {fileID: 11400000, guid: 9f07fd69c7ad2e94a8301685ba2aa146, type: 2}
+  dialogue:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   state: 1
   anim: {fileID: 0}
   Button: {fileID: 792790750}
+  dialogueindex: 0
 --- !u!70 &1424598480
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
